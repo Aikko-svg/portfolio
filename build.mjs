@@ -217,6 +217,6 @@ writeFileSync(join(OUT, "about", "index.html"), aboutPage());
 studies.forEach((s, i) => {
   const dir = join(OUT, "work", s.slug);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, "index.html"), caseStudyPage(s, studies[i - 1], studies[i + 1]));
+  writeFileSync(join(dir, "index.html"), caseStudyPage(s, studies[(i - 1 + studies.length) % studies.length], studies[(i + 1) % studies.length]));
 });
 console.log(`built ${studies.length} case studies → dist/`);
