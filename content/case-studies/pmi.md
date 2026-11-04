@@ -13,7 +13,7 @@ timeline: December 2022 to May 2023
 role: Senior UX Designer, project lead
 team: The Croc design and delivery team. Client side: PMI head office digital team, market leads from the five launch countries, IQOS brand team, compliance
 hero: hero.jpg
-heroAlt: The platform in two markets, same components, different hierarchy
+heroAlt: The redesigned homepage and Rewards screens on two phones
 outcomes:
   - 32% increase in time on platform
   - 12.6% increase in task submission
@@ -29,7 +29,7 @@ PMI's B2B retailer platform had grown differently in every European market. Prod
 The markets were not starting from the same place. Some needed the new platform badly. The largest, Germany, already had a site that worked for it and a clear view of what a replacement would have to do to be worth adopting. That was a fair test, and it became the standard the whole system was designed to meet.
 
 ::image full s1-before-state.jpg
-The same products, a different platform in every country. Two markets' sitemaps from the platform review: one with eight top-level sections and three levels of nesting, one that needed on-page navigation just to reach its own content.
+The same products, a different platform in every country. Three of the legacy German screens: a feed of promotions, a system notice as the welcome, and banners with no hierarchy between them.
 
 ### 2. The evidence came before the brief
 
@@ -41,8 +41,8 @@ Alongside that, a repeatable UX audit ran across the Middle East and Africa: Sou
 
 So when the European markets came to the table, the question of what retailers actually did on the platform had an answer before anyone in the room had an opinion.
 
-::image full s2-research-menus.jpg
-Three markets, three mobile menus. The platform review covered nine live markets; the one on the right has eleven top-level links. Cluttered navigation was the single most consistent finding, and it shaped the six-group architecture everything else sat on.
+::image pair s2-menus.jpg s2-analytics.jpg
+Left, three markets' mobile menus from the nine-market review; the one on the right has eleven top-level links. Right, the analytics audit: behaviour flow, page depth and tasking trends. Almost half of retailers who reached My Tasks left without visiting another page.
 
 ### 3. Define the constraints before designing to them
 
@@ -53,7 +53,7 @@ So I asked head office for a different kind of answer: not what they wanted, but
 That changed how the programme ran. Germany, with the most demanding requirements, became the proxy for every market: the variants it needed went into the shared system for all of them. The first release shipped with components that had originally been scoped for phase two, because the room to build them had been there all along; it just had not been named. The trade-off was real: smaller markets inherited a heavier system than they would have chosen on their own. Letting the most demanding market set the ceiling was the right call for the programme, not for every market in it.
 
 ::image pair s3-component-library.jpg s3-variants.jpg
-The limit was build effort, not brand. Once named, there was more room than anyone assumed. Left, the component library; right, the variants originally scoped for phase two, now in release one.
+The limit was build effort, not brand. Once named, there was more room than anyone assumed. Left, the design system: palettes, button states and input fields. Right, the same Rewards template in two configurations; the rewards carousel on the right was a phase-two variant that shipped in release one.
 
 ### 4. One hierarchy that fourteen markets could rearrange
 
@@ -69,4 +69,4 @@ Compliance drew the boundaries. Research settled the arguments inside them. Left
 Time on platform rose 32% and task submission 12.6% across the unified platform. The five launch markets went live on one component system, each with its own hierarchy, and it has since been rolled out to fourteen. The design decisions mattered, but the one that changed the project was getting the constraints defined early, and the one that made that possible was two years of evidence that meant nobody had to argue from instinct.
 
 ::image full s5-live-platform.jpg
-One system, fourteen hierarchies. The live platform in two markets side by side.
+One system, fourteen hierarchies. The homepage and My Tasks on the shipped template; every market reorders the same cards for its own catalogue.
