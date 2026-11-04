@@ -4,14 +4,14 @@ order: 2
 title: PMI
 panelTitle: PMI retailer platform
 hook: 32% more time on platform. Designed with 5 markets, rolled out to 14.
-oneLiner: Unifying a fragmented B2B retailer platform across five European markets, with Germany pushing one way and head office the other.
+oneLiner: Unifying a fragmented B2B retailer platform across five European markets into one component system each market could make its own.
 tags: Product Design, Design Systems, IA
 year: 2023
-description: Designing a single component system and information architecture that five launch markets could restructure for their own catalogues, later rolled out to 14, inside head office constraints that were never written down until we forced the question.
+description: Designing a single component system and information architecture that five launch markets could restructure for their own catalogues, later rolled out to 14, by getting the real constraints defined early and designing to them.
 client: Philip Morris International, via The Croc
 timeline: December 2022 to May 2023
 role: Senior UX Designer, project lead
-team: The Croc design and delivery team. Client side: PMI head office digital team, market leads from the five launch countries with Germany leading, IQOS brand team, compliance
+team: The Croc design and delivery team. Client side: PMI head office digital team, market leads from the five launch countries, IQOS brand team, compliance
 hero: hero.jpg
 heroAlt: The platform in two markets, same components, different hierarchy
 outcomes:
@@ -21,40 +21,38 @@ outcomes:
   - First release shipped with component variants originally scoped for phase two
 ---
 
-### 1. Five markets, one platform, and Germany did not need it
+### 1. Five markets, five platforms
 
-PMI's B2B retailer platform had grown differently in every European market. Head office wanted one system: a fixed set of components that each market could reuse and reorder for its own catalogue, since products, popularity and even what was sold varied by country.
+PMI's B2B retailer platform had grown differently in every European market. Products, popularity and even what was sold varied by country, and each market's site had evolved around its own catalogue. Head office wanted one system: a fixed set of components that every market could reuse and reorder for itself, without five separate builds to maintain.
 
-Most markets were in need and open to it. Germany was not. It was the most successful market in Europe, already had its own way of doing things, and had little reason to want a platform built for everyone else. Its site was not exceptional, but it worked, and the stance was reasonable: if the new one is not better, it should not replace ours.
+The markets were not starting from the same place. Some needed the new platform badly. The largest, Germany, already had a site that worked for it and a clear view of what a replacement would have to do to be worth adopting. That was a fair test, and it became the standard the whole system was designed to meet.
 
 ::image full s1-before-state.jpg
 The same products, a different platform in every country. The before state across four markets.
 
-### 2. Sign-off was easy until it was not
+### 2. Define the constraints before designing to them
 
-The first phase moved fast. Components went through review on both sides with little resistance. When I asked the German team for input on what they needed, the interest was not there. Then, with the component set largely designed, Germany came back hard: this is not good enough, we need more.
+The first phase moved quickly: components went through review on both sides with little resistance. The harder part came when the markets began to engage in detail with what they needed. Requests arrived that went beyond the original scope, and it was not clear which of them the programme could absorb. The scope had been set in terms of features, not limits.
 
-The frustration was real. But the actual problem was not Germany. It was that head office had never said what the limits were. They would tell us something was out of scope, then, when a market pushed, concede it after all. We were stuck between the client paying for the work and the market that was often right, with no fixed line to design against.
+So I asked head office for a different kind of answer: not what they wanted, but what was fixed. The non-negotiables turned out to be about build complexity and timeline rather than brand or governance, and they were fewer than anyone had assumed. Once they were written down, every market request could be assessed against something concrete, and most of them fit.
 
-So I called a hardball session with head office with one question: what are the non-negotiables? Not preferences, the actual no-gos. The answer was smaller than expected. The constraint was build complexity and timeline, not brand or governance. Once that was written down, Germany's requests could be assessed against something real, and most of them fit.
-
-Germany became the proxy for every market. Its requirements were the heaviest and the other markets were content to let it lead. The variants it won went into the shared system for everyone. The first release ended up more established than head office had scoped, because the room to push was there all along. Nobody had named it. The cost was that smaller markets inherited variants they did not need and a heavier system than they would have chosen; letting the biggest market set the ceiling was the right call for the programme, not for every market in it.
+That changed how the programme ran. Germany, with the most demanding requirements, became the proxy for every market: the variants it needed went into the shared system for all of them. The first release shipped with components that had originally been scoped for phase two, because the room to build them had been there all along; it just had not been named. The trade-off was real: smaller markets inherited a heavier system than they would have chosen on their own. Letting the most demanding market set the ceiling was the right call for the programme, not for every market in it.
 
 ::image pair s2-component-library.jpg s2-variants.jpg
 The limit was build effort, not brand. Once named, there was more room than anyone assumed. Left, the component library; right, the variants originally scoped for phase two, now in release one.
 
-### 3. IQOS wanted the top menu. Compliance said some products could not sit together
+### 3. One hierarchy that fourteen markets could rearrange
 
-The information architecture had its own politics. The IQOS brand team wanted their products in primary navigation, not behind a sub-category, and had their own commercial reasons. Compliance ruled that certain product groupings could not appear together regardless of what any market or brand wanted. Each market had its own view of the hierarchy that suited its catalogue.
+The information architecture had three sets of requirements to reconcile. The IQOS brand team had commercial reasons to want their products in primary navigation. Compliance ruled that certain product groupings could not appear together, whatever any market or brand preferred. And every market had a view of the hierarchy that suited its own catalogue.
 
-The approach was the same as with components. Get everyone on one call, walk through the high-level IA together, and use the research to argue the groupings. We had done a lot of it and it let us push back on a few requests with evidence rather than opinion. Compliance set the hard boundaries; research decided the rest; the markets kept the freedom to reorder within that.
+The approach was the same as for the components: get everyone on one call, walk through the high-level IA together, and let the research we had done settle the groupings. Compliance set the hard boundaries. Research decided the rest. Within that, markets kept the freedom to reorder.
 
 ::image pair s3-ia.jpg s3-two-markets.jpg
 Compliance drew the boundaries. Research settled the arguments inside them. The detail: the same homepage dashboard component carries a different task hierarchy in every market, because the order of the cards is a market-level variable and the card itself is not. That is what let fourteen markets ship from one system without fourteen designs.
 
 ### 4. Results
 
-Time on platform rose 32% and task submission 12.6% across the unified platform. The five launch markets went live on one component system, each with its own hierarchy, and it has since been rolled out to fourteen. The design decisions mattered, but the one that changed the project was forcing the client to write down its constraints. Everything got easier after that.
+Time on platform rose 32% and task submission 12.6% across the unified platform. The five launch markets went live on one component system, each with its own hierarchy, and it has since been rolled out to fourteen. The design decisions mattered, but the one that changed the project was getting the constraints defined early. Everything got easier after that.
 
 ::image full s4-live-platform.jpg
 One system, fourteen hierarchies. The live platform in two markets side by side.
