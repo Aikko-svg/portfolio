@@ -85,14 +85,25 @@ p { margin: 0 0 var(--s3); }
 .body { display: grid; gap: var(--s6); margin-top: var(--s5); }
 @media (min-width: 1024px) {
   .body { grid-template-columns: 2fr 1fr; gap: var(--s6); align-items: start; margin-top: var(--s6); }
-  .panel { position: sticky; top: calc(var(--nav-h) + 32px); order: 2; max-height: calc(100vh - var(--nav-h) - 64px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .panel { position: sticky; top: calc(var(--nav-h) + 32px); order: 2; }
   .narrative { order: 1; }
 }
 /* Below 1024px the panel sits under the hero, above the narrative */
 @media (max-width: 1023.98px) { .panel { order: 1; } .narrative { order: 2; } }
 
+/* Metrics strip under the lede */
+.metrics { margin: 0 0 var(--s5); }
+.metrics-big { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
+@media (min-width: 640px) { .metrics-big { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+.metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s3); display: grid; gap: 6px; }
+.metric strong { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1; letter-spacing: -0.01em; }
+.metric span { font-size: 14px; line-height: 1.45; color: var(--text-2); }
+.metrics-small { list-style: none; margin: var(--s2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px var(--s3); }
+.metrics-small li { font-size: 14px; color: var(--text-2); padding-left: 14px; position: relative; }
+.metrics-small li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); }
+@media (min-width: 1024px) { .metric strong { font-size: 48px; } }
+
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s3); }
-.panel-title { font-family: var(--serif); font-size: 26px; line-height: 1.15; margin-bottom: var(--s2); }
 .panel-desc { color: var(--text-2); font-size: 15px; line-height: 1.55; margin-bottom: var(--s3); }
 .panel dl { margin: 0; border-top: 1px solid var(--border); }
 .panel .row { display: grid; grid-template-columns: 88px 1fr; gap: var(--s2); padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.5; }

@@ -38,12 +38,13 @@ function renderBody(body, slug) {
     if (!d) { out.push(lines[i]); continue; }
     const files = d[2].trim().split(/\s+/);
     const caption = (lines[i + 1] || "").trim();
+    const alt = caption.replace(/[*_`]/g, "").split(/(?<=\.)\s/)[0];
     i += 1;
     const img = (f, w, h) => {
       const p = join(ROOT, "public", "images", slug, f);
       const exists = existsSync(p);
       return exists
-        ? `<img src="/images/${slug}/${f}" width="${w}" height="${h}" loading="lazy" alt="">`
+        ? `<img src="/images/${slug}/${f}" width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}">`
         : `<div class="ph" style="aspect-ratio:${w}/${h}"><span>${f}<br>${w} × ${h}</span></div>`;
     };
     const inner = d[1] === "full"
@@ -114,15 +115,27 @@ function heroImg(s) {
 
 function panel(s) {
   const row = (k, v) => v ? `<div class="row"><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
-  const outcomes = (s.outcomes || []).map((o) => `<li>${esc(o)}</li>`).join("");
   return `<aside class="panel">
-  <h2 class="panel-title">${esc(s.panelTitle || s.title)}</h2>
   <p class="panel-desc">${esc(s.description)}</p>
   <dl>
-    ${row("Year", s.year)}${row("Client", s.client)}${row("Timeline", s.timeline)}${row("Role", s.role)}${row("Team", s.team)}
+    ${row("Year", s.year)}${row("Client", s.client)}${row("Role", s.role)}${row("Team", s.team)}
   </dl>
-  ${outcomes ? `<div class="outcomes"><h3>Outcomes</h3><ul>${outcomes}</ul></div>` : ""}
 </aside>`;
+}
+
+// Outcomes strip: lines that start with a figure become big tiles, the rest a short list.
+function metrics(s) {
+  const items = s.outcomes || [];
+  const big = [], small = [];
+  for (const o of items) {
+    const m = o.match(/^([£$]?\d[\d,.]*[%KMk]?(?:\s?(?:to|→)\s?\d+)?)\s+(.*)$/);
+    if (m && big.length < 4) big.push([m[1], m[2]]); else small.push(o);
+  }
+  if (!items.length) return "";
+  return `<section class="metrics" aria-label="Outcomes">
+  ${big.length ? `<div class="metrics-big">${big.map(([n, t]) => `<div class="metric"><strong>${esc(n)}</strong><span>${esc(t)}</span></div>`).join("")}</div>` : ""}
+  ${small.length ? `<ul class="metrics-small">${small.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>` : ""}
+</section>`;
 }
 
 function caseStudyPage(s, prev, next) {
@@ -136,6 +149,7 @@ function caseStudyPage(s, prev, next) {
     <p class="eyebrow">${esc(s.tags)} · ${esc(s.year)}</p>
     <h1 class="study-title">${esc(s.title)}</h1>
     <p class="study-lede">${esc(s.oneLiner)}</p>
+    ${metrics(s)}
     <div class="hero">${heroImg(s)}</div>
     <div class="body">
       <div class="narrative">${s.html}</div>

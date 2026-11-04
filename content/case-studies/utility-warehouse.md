@@ -1,16 +1,15 @@
 ---
 slug: utility-warehouse
-order: 3
+order: 1
 title: Utility Warehouse
 panelTitle: William: Utility Warehouse
-hook: £1M a year in fines. £184K saved in three months.
+hook: Misdispatched engineers cost £1M a year. Three months after launch: £184K back, 56% fewer bad tickets.
 oneLiner: Replacing a fault-raising system that bounced tickets back to advisers and angry customers, during a CRM migration that wanted it copied as it was.
-tags: Product Design, UX Research
-year: 2016 to 2019
+tags: UX Design, UX Research
+year: 2019
 description: Owning the redesign of the fault-raising and triage template from first principles during the migration from BILL to William, instead of rebuilding broken logic in a new shell.
 client: Utility Warehouse, in-house
-timeline: 12 months
-role: Product Designer
+role: UX Designer
 team: Programme lead, a director-level sponsor, first-line advisers, head of second line, second-line engineers, Learning and Development, and the William platform engineers
 hero: hero.jpg
 heroAlt: The William ticket status panel beside the adviser's actions list, with SLA and resolution progress
@@ -28,7 +27,7 @@ A first-line adviser at Utility Warehouse took a call about a fault, filled in t
 
 The adviser then had to ring the customer again, explain that an engineer was not coming yet and that more checks were needed, and ask questions the customer believed they had already answered. The customer wanted it fixed yesterday. The adviser took the anger for a system that had given them no way to get it right first time.
 
-At the business level, the head of second line, who managed external engineer dispatch and reported on fines, put the previous year's cost of misdispatched engineers at £1 million. Over 40% of fault submissions needed manual correction. Six separate escalation pathways were applied inconsistently. It looked like a training problem. It was an architecture problem.
+At the business level, the head of second line, who managed external engineer dispatch and reported on fines, put the previous year's cost of misdispatched engineers, including the fines they attracted, at £1 million. Over 40% of fault submissions needed manual correction. Six separate escalation pathways were applied inconsistently. It looked like a training problem. It was an architecture problem.
 
 ::image full s1-legacy-form.jpg
 The legacy BILL enquiry window. A manual code, a fault type, and the diagnostic questions as a paragraph of text in a scrolling box. No validation, no guidance, no way to know whether a ticket was complete before it left your screen.
@@ -40,7 +39,7 @@ Before touching the form, I mapped the whole journey: from the customer's first 
 The map made the diagnosis unarguable. The pain was not in any one step; it was in the hand-offs. First line gathered details second line did not need and missed the ones they did. Fault categories were chosen by guesswork. Nobody could see where a ticket was once it left them, so duplicates were raised and customers were called back with nothing new to say. Six escalation routes existed because six teams had each built their own.
 
 ::image full s2-journey-map.jpg
-The operational journey map: 24 steps, five phases, pain points and opportunities per step. The curve bottoms out at fault raising and hand-off, not at the customer's first call.
+The operational journey map, which I owned: 24 steps, five phases, pain points and opportunities per step. The curve bottoms out at fault raising and hand-off, not at the customer's first call.
 
 ### 3. Copying the workflow would copy the £1 million
 
