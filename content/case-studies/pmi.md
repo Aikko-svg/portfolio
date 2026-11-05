@@ -35,10 +35,13 @@ The German platform before, next to what the market interviews told us.
 
 I had worked on the platform market by market for two years before this, so we didn't start cold. A review of nine live markets showed the same problems everywhere: ten or eleven items in the main menu, related content scattered, support buried. The analytics told the rest. In one market the tasks page took over three quarters of all views, and almost half of those people left without opening anything else. Retailers came for a task and went.
 
+::image full s2-behaviour-flow.jpg
+Redrawn from the platform analytics. The drop-off at My Tasks shaped the whole architecture.
+
 That fed straight into the architecture. The first EU sitemap had ten top-level sections; I pulled it down to six primary groups and moved the rest into secondary navigation. We tested it by walking eight real user stories through it screen by screen, and it took three rounds before it held. By the time the markets were in the room, "what do retailers actually do here?" had an answer that wasn't anyone's opinion.
 
-::image full s2-behaviour-flow.jpg
-The behaviour flow: almost half of retailers who reached My Tasks left without opening another page.
+::image full s2-ia.jpg
+Six primary groups, ordered by what retailers actually used, with Online Shop and My Account moved to utility navigation.
 
 ### 3. Finding the sweet spot between HQ and the markets
 
