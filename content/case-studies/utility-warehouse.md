@@ -3,71 +3,62 @@ slug: utility-warehouse
 order: 1
 title: Utility Warehouse
 panelTitle: William: Utility Warehouse
-hook: Misdispatched engineers cost £1M a year. Three months after launch: £184K back, 56% fewer bad tickets.
-oneLiner: Replacing a fault-raising system that bounced tickets back to advisers and angry customers, during a CRM migration that wanted it copied as it was.
+hook: Misdispatched engineers were costing £1M a year. Three months after launch: £184K back, 56% fewer bad tickets.
+oneLiner: Redesigning how advisers raise broadband faults, during a CRM migration that wanted the old process copied as it was.
 tags: UX Design, UX Research
 year: 2019
-description: Owning the redesign of the fault-raising and triage template from first principles during the migration from BILL to William, instead of rebuilding broken logic in a new shell.
+description: Redesigning the fault-raising and triage flow from first principles during the move from BILL to William, instead of rebuilding broken logic in a new system.
 client: Utility Warehouse, in-house
-role: UX Designer
-team: Programme lead, a director-level sponsor, first-line advisers, head of second line, second-line engineers, Learning and Development, and the William platform engineers
+role: UX Designer. I owned the new fault-raising and triage flow and the journey map, ran the cross-department workshops, and supported the wider fault tooling
+team: Programme lead and director-level sponsor, who set the migration scope. Head of second line, who defined what a dispatchable ticket needed. First-line advisers, second-line engineers, Learning and Development, and the William platform engineers
 hero: hero.jpg
 heroAlt: Guided fault entry in the adviser's customer record: a failed line test triggers second-line escalation and captures the sync data
 outcomes:
-  - 56% reduction in ticket quality errors reaching second line
-  - £184K saved within three months from reduced engineer misdispatch
-  - 17% reduction in average handling time on fault calls
-  - Six escalation pathways consolidated into one structured flow
-  - Fault flow and the adviser training programme designed together, not in sequence
+  - 56% fewer ticket errors reaching second line
+  - £184K saved in three months on engineer misdispatch, reported by the head of second line
+  - 17% shorter handling time on fault calls
+  - 6 escalation routes reduced to 1 guided flow
 ---
 
 ### 1. A ticket that came back the next day
 
-A first-line adviser at Utility Warehouse took a call about a fault, filled in the legacy BILL form, and raised it to second line. The form was a dense editing window built on pre-selected templates: a manual fault code, outdated questions pasted into a free-text box, no validation. Nothing stopped an incomplete ticket going through. A day later, sometimes sooner, it came back marked incorrectly raised.
+An adviser takes a call about a broadband fault, fills in the old BILL form and raises it to second line. The form was a free-text box with a manual fault code and no validation, so nothing stopped an incomplete ticket going through. A day later it came back marked "incorrectly raised", and the adviser had to ring an already angry customer to ask questions they thought they'd answered.
 
-The adviser then had to ring the customer again, explain that an engineer was not coming yet and that more checks were needed, and ask questions the customer believed they had already answered. The customer wanted it fixed yesterday. The adviser took the anger for a system that had given them no way to get it right first time.
-
-At the business level, the head of second line, who managed external engineer dispatch and reported on fines, put the previous year's cost of misdispatched engineers, including the fines they attracted, at £1 million. Over 40% of fault submissions needed manual correction. Six separate escalation pathways were applied inconsistently. It looked like a training problem. It was an architecture problem.
+Across the business, the head of second line put the previous year's cost of sending engineers to the wrong jobs, fines included, at £1 million. Over 40% of fault submissions needed manual correction.
 
 ::image full s1-legacy-form.jpg
-The legacy BILL enquiry window. A manual code, a fault type, and the diagnostic questions as a paragraph of text in a scrolling box. No validation, no guidance, no way to know whether a ticket was complete before it left your screen.
+The old BILL form: a manual code and the diagnostic questions pasted into a scrolling text box. Nothing told the adviser a ticket was incomplete.
 
 ### 2. Twenty-four steps, five hand-offs, six ways to escalate
 
-Before touching the form, I mapped the whole journey: from the customer's first call, through first-line troubleshooting, fault raising, hand-off to second line, and back to the customer at ticket close. Twenty-four steps across five phases, with the goal, the pain points and the opportunities for each, built with every department that touched it.
+Before touching the form, I mapped the whole journey with every department involved, from the customer's first call to the ticket closing. Twenty-four steps across five phases.
 
-The map made the diagnosis unarguable. The pain was not in any one step; it was in the hand-offs. First line gathered details second line did not need and missed the ones they did. Fault categories were chosen by guesswork. Nobody could see where a ticket was once it left them, so duplicates were raised and customers were called back with nothing new to say. Six escalation routes existed because six teams had each built their own.
+The problems weren't in any one screen. They were in the hand-offs. First line collected details second line didn't need and missed the ones they did. Nobody could see where a ticket was once it left them, so duplicates got raised. And there were six escalation routes because six teams had each built their own.
 
 ::image full s2-journey-map.jpg
-The operational journey map, which I owned: 24 steps, five phases, pain points and opportunities per step. The curve bottoms out at fault raising and hand-off, not at the customer's first call.
+The journey map I built. The low point is fault raising and hand-off, not the customer's first call.
 
 ### 3. Copying the workflow would copy the £1 million
 
-Utility Warehouse was migrating from BILL to William, a new cloud platform. The programme lead and a director-level sponsor wanted the existing fault workflows replicated in William on the faster timeline a straight copy allowed. The migration deadline was real and the argument was reasonable.
+Utility Warehouse was moving from BILL to a new platform, William. The programme lead and sponsor wanted the old fault workflows copied across, the quickest route to the migration deadline. Fair on timing, but copying the workflow meant copying the cost. As a design team we pushed back, and William got a redesigned fault flow instead of a lift and shift.
 
-As a design team we pushed back: copying the workflow would copy the £1 million. The migration was the one moment the fault architecture could be rebuilt from first principles, and that window would not come again. We did not win it clean, but the principle held: William would get a redesigned fault and triage flow, not a lift and shift.
-
-Our first approach to the redesign was to consult each department separately. It did not work; feedback from one group contradicted the last, and every round trip reopened a decision someone had already signed off. So we changed how we worked: one workshop, every part of the business the fault flow touched in the room, decisions made once. Bringing Learning and Development in was the decision that mattered most. New advisers spent a week in a classroom before taking live calls, and designing the flow with L&D meant the training was rebuilt alongside the product. Advisers learned one system in the classroom and met the same system on the floor.
+Our first go at the redesign was consulting each department separately. It didn't work: every group contradicted the last and decisions kept reopening. So I ran cross-department workshops instead, with first line, second line, engineers, L&D and the platform team in one room, deciding things once. Bringing L&D in mattered most. New advisers had a week in the classroom before going live, so we rebuilt the training alongside the product and they learned the same system they'd use on the floor.
 
 ::image pair s3-legacy-vs-new.jpg s3-user-flow.jpg
-Left, the legacy manual fault model against the validation-led architecture that replaced it. Right, the operational logic restructured: four product flows reduced to one guided path with a single conditional branch for outages.
+Left, the old manual model against the validation-led one that replaced it. Right, four product flows reduced to one guided path, with one branch for outages.
 
-### 4. The ticket cannot leave until it is complete
+### 4. The ticket can't leave until it's complete
 
-The fault-raising and triage template was mine. I took the contradictory requirements from first line, second line and L&D and restructured them into one guided entry: Outage, Diagnostic, Classify, Review. Progressive questions driven by the fault type, so an adviser only sees what applies. Inline validation on every required field, checked against what second line actually needs to dispatch. A line test result that fails triggers the escalation path and captures the sync data automatically, instead of relying on the adviser to remember.
+The fault-raising and triage flow was mine. The questions change with the fault type, so advisers only see what applies. Every required field is checked against what second line needs to send an engineer. If the line test fails, the flow escalates and captures the sync data itself, instead of relying on the adviser to remember.
 
-I tested each iteration with first-line advisers before it went near the platform engineers, then worked with them through implementation. The detail I would point to is the validation: the adviser sees why a field matters at the moment they are filling it in, not in a rejection the next day.
+I tested each version with first-line advisers before it went to the platform engineers. The part I'd point to is the validation: advisers see why a field matters while they're filling it in, not in a rejection the next day.
 
 ::image pair s4-fault-form.jpg s4-raised-ticket.jpg
-Left, a broadband fault in progress: the fault type sets the questions, with help on the ones advisers used to get wrong. Right, the raised ticket as the adviser sees it: SLA clock, resolution stage and the adviser–engineer activity in one panel.
+Left, a broadband fault in progress: the fault type sets the questions. Right, the raised ticket, with SLA, stage and adviser–engineer notes in one panel.
 
-### 5. Structure in, errors out
+### 5. Results
 
-The other half was visibility. A split-panel ticket status gave advisers the SLA clock, the resolution stage and who held the ticket, inside the customer record, which the legacy system had never offered. Fewer duplicates were raised because advisers could see a fault was already open; fewer customers were called back with nothing to say.
-
-Within three months, engineer misdispatch costs had fallen by £184K, reported by the same head of second line who had tracked the fines. Ticket quality errors reaching second line dropped 56%. Average handling time on fault calls fell 17%, because advisers were no longer re-raising the same fault twice.
-
-The interface changed. What actually fixed it was the architecture underneath, and the decision to design the training with the product rather than after it.
+Within three months, misdispatch costs were down £184K, reported by the same head of second line who had tracked the fines. Ticket errors reaching second line fell 56%. Handling time on fault calls dropped 17%, mostly because advisers stopped re-raising the same fault. Seeing a ticket's status inside the customer record helped too: advisers could tell a fault was already open before raising another.
 
 ::image full s5-tracker.jpg
-The fault ticketing tracker: open, critical and in-progress counts, priority and progress per ticket, and the same status panel on the right. One escalation path, visible end to end.
+The fault tracker: every open ticket, its priority and progress, and the same status panel on the right.
