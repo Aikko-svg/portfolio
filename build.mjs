@@ -200,17 +200,29 @@ function homePage(studies) {
 }
 
 function aboutPage() {
+  const clients = ["Sky", "Spotify", "Vodafone", "London Stock Exchange", "NHS", "Nissan", "Volkswagen", "Cisco", "Unilever (Dove)", "Philip Morris International", "BAT", "Hastings Direct", "Utility Warehouse", "Keywords Studios", "UserTesting", "Blue Prism", "Optimum Nutrition", "CUBE", "Morae"];
+  const recognition = ["The Drum Awards, Rebrand/Relaunch, 2023", "Global ACE Awards, 2022", "B2B Marketing Awards, 2021"];
   return shell({
     title: `About — ${SITE.name}`,
     path: "/about/",
     body: `
 <section class="about wrap">
   <h1>About</h1>
-  <div class="about-body">
-    <p>I'm a UK-based product designer with seven years' experience, specialising in deciphering complex systems into clear, scalable and commercially effective experiences, mostly through customer journey work, service design and making sense of legacy or tangled problem spaces.</p>
-    <p>Recent work includes leading design for Lucky Riches, an investor-backed online casino, end to end from discovery through QA. Before that: a unified B2B retailer platform for Philip Morris International, a fault-raising redesign at Utility Warehouse, and the quote journey at Hastings Direct.</p>
-    <p><a href="mailto:${SITE.email}">${SITE.email}</a></p>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I'm Youcef, a product designer in London with seven years across B2B, B2C, SaaS and enterprise, agency-side, in-house and independently.</p>
+      <p>I studied psychology before moving into design, and it still shapes how I work. I'm drawn to the structural side of a problem: why people behave the way they do, where a system breaks down, and how to fix the logic underneath rather than repaint the interface on top.</p>
+      <p>Most of my work sits where research meets delivery. I run workshops, map journeys, dig into the data and use what I find to make decisions that hold up in a room full of stakeholders. I judge the work by what it changes: £184K back in misdispatch costs at Utility Warehouse, ease of use up 33% at Hastings Direct, task submission up 12.6% across PMI's markets.</p>
+      <p>I've led projects from discovery through to QA, worked day to day with engineers, product managers and compliance teams, and mentored junior designers along the way.</p>
+      <p>Outside work, I'm usually on a football pitch or building a side project.</p>
+      <p><a href="mailto:${SITE.email}">${SITE.email}</a></p>
+    </div>
+    <img class="about-photo" src="/images/about/youcef.jpg" width="591" height="591" alt="Youcef Laraba">
   </div>
+  <dl class="about-list">
+    <div><dt>Clients and brands</dt><dd><ul>${clients.map((c) => `<li>${c}</li>`).join("")}</ul></dd></div>
+    <div><dt>Recognition</dt><dd><ul class="single">${recognition.map((c) => `<li>${c}</li>`).join("")}</ul></dd></div>
+  </dl>
 </section>`,
   });
 }

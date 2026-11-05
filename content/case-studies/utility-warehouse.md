@@ -54,7 +54,7 @@ Left, the legacy manual fault model against the validation-led architecture that
 
 ### 4. The ticket cannot leave until it is complete
 
-The fault-raising and triage template was mine. I took the contradictory requirements from first line, second line and L&D and restructured them into one guided entry: Outage, Diagnostic, Classify, Review. Progressive questions driven by the fault type, so an adviser only sees what applies. Inline validation on every required field, checked against what second line actually needs to dispatch. A line test result that fails triggers the escalation path and captures the sync data automatically, instead of relying on the adviser to remember. And a review step that will not let the ticket escalate until every requirement is met, with the diagnostic path written into the ticket so the engineer can see how the adviser got there.
+The fault-raising and triage template was mine. I took the contradictory requirements from first line, second line and L&D and restructured them into one guided entry: Outage, Diagnostic, Classify, Review. Progressive questions driven by the fault type, so an adviser only sees what applies. Inline validation on every required field, checked against what second line actually needs to dispatch. A line test result that fails triggers the escalation path and captures the sync data automatically, instead of relying on the adviser to remember.
 
 I tested each iteration with first-line advisers before it went near the platform engineers, then worked with them through implementation. The detail I would point to is the validation: the adviser sees why a field matters at the moment they are filling it in, not in a rejection the next day.
 
