@@ -50,16 +50,29 @@ function renderBody(body, slug) {
     const img = (f, w, h, sizes) => {
       const p = join(ROOT, "public", "images", slug, f);
       const exists = existsSync(p);
+      if (exists) { const d = jpegSize(p); if (d) { h = Math.round(d[1] * w / d[0]); } }
       return exists
         ? `<img src="/images/${slug}/${f}"${srcset(slug, f, w, sizes)} width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}">`
         : `<div class="ph" style="aspect-ratio:${w}/${h}"><span>${f}<br>${w} × ${h}</span></div>`;
     };
     const inner = d[1] === "full"
-      ? img(files[0], 1440, 810, "(min-width: 1024px) 760px, 100vw")
+      ? img(files[0], 1440, 810, "(min-width: 1024px) 1200px, 100vw")
       : `<div class="pair">${img(files[0], 1440, 960, "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw")}${img(files[1], 1440, 960, "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw")}</div>`;
     out.push(`<figure class="fig fig-${d[1]}">${inner}${caption ? `<figcaption>${marked.parseInline(caption)}</figcaption>` : ""}</figure>`);
   }
   return marked.parse(out.join("\n"));
+}
+
+// Read width/height from a JPEG's SOF marker so figures reserve the right aspect ratio.
+function jpegSize(p) {
+  const b = readFileSync(p); let i = 2;
+  while (i < b.length) {
+    if (b[i] !== 0xff) return null;
+    const m = b[i + 1], len = b.readUInt16BE(i + 2);
+    if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)];
+    i += 2 + len;
+  }
+  return null;
 }
 
 function loadStudies() {
