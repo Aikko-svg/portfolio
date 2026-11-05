@@ -1,6 +1,6 @@
 ---
 slug: lucky-riches
-order: 2
+order: 4
 title: Lucky Riches
 panelTitle: Lucky Riches casino platform
 hook: Designing a regulated product from zero, so the rules became the experience.

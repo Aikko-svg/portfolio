@@ -1,6 +1,6 @@
 ---
 slug: hastings-direct
-order: 4
+order: 3
 title: Hastings Direct
 panelTitle: Hastings Direct
 hook: Ease of use up 33%, task success up 14%. Same 42 questions.

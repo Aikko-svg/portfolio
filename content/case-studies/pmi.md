@@ -1,69 +1,68 @@
 ---
 slug: pmi
-order: 3
+order: 2
 title: PMI
 panelTitle: PMI retailer platform
-hook: Task submission up 12.6%. One component system, five markets at launch, fourteen now.
-oneLiner: Unifying a fragmented B2B retailer platform across five European markets into one component system each market could make its own.
+hook: Retailer task completion up 21%, market launches 38% faster. One component system, 4 markets to 14.
+oneLiner: One component system for a retailer platform that had grown differently in every European market. 4 markets at launch, 14 while I was there, worldwide since.
 tags: Product Design, Design Systems, IA
 year: 2023
-description: Designing a single component system and information architecture that five launch markets could restructure for their own catalogues, later rolled out to 14, on an evidence base built across more than a dozen markets over the preceding two years.
+description: One shared component system and information architecture for PMI's B2B retailer platform, balancing what head office would fund against what each market wanted.
 client: Philip Morris International, via The Croc
-role: Senior UX Designer, project lead
-team: The Croc design and delivery team. Client side: PMI head office digital team, market leads from the five launch countries, IQOS brand team, compliance
+role: Senior UX Designer and project lead. I led two designers and owned the IA and component work
+team: The Croc design and delivery team. Client side: PMI head office digital team, market leads, IQOS brand team, compliance. HQ held scope and budget, markets owned their catalogues, compliance set the hard rules
 hero: hero.jpg
 heroAlt: The redesigned homepage and Rewards screens on two phones
 outcomes:
-  - 12.6% increase in task submission
-  - 5 to 14 markets on one component system, each restructuring hierarchy for its own catalogue
-  - 32% increase in time on platform
-  - First release shipped with component variants originally scoped for phase two
-  - Built on a research base of platform reviews, analytics and user-journey validation across nine markets
+  - +21% retailer task completion, 62% to 75% averaged across launch markets (Salesforce Einstein Analytics)
+  - 38% faster market launches, 16 weeks to 10, because every component was built once for all markets
+  - +32% time on platform, which was the goal on a platform built to train retailers as well as sell
+  - 14 markets while I was there, from 4 at launch, and worldwide since
 ---
 
-### 1. Five markets, five platforms
+### 1. Same products, a different platform in every country
 
-PMI's B2B retailer platform had grown differently in every European market. Products, popularity and even what was sold varied by country, and each market's site had evolved around its own catalogue. Head office wanted one system: a fixed set of components that every market could reuse and reorder for itself, without five separate builds to maintain.
+PMI's retailer platform had grown up separately in each European market. Same company, same products, but every country's site had been built around its own catalogue and priorities. Retailers use it to complete tasks, training and selling activities that earn rewards. HQ wanted one component system every market could reuse and reorder, instead of paying for a separate build each time.
 
-The markets were not starting from the same place. Some needed the new platform badly. The largest, Germany, already had a site that worked for it and a clear view of what a replacement would have to do to be worth adopting. That was a fair test, and it became the standard the whole system was designed to meet.
+Germany was the hard one. It already had a site that worked, so ours had to beat it before they would switch. We made Germany the bar for everyone.
 
 ::image full s1-before-state.jpg
-The same products, a different platform in every country. Three of the legacy German screens: a feed of promotions, a system notice as the welcome, and banners with no hierarchy between them.
+The legacy German platform: a feed of promotions, a system notice as the welcome, and banners with no hierarchy between them.
 
-### 2. The evidence came before the brief
+### 2. We had the evidence before the brief arrived
 
-The EU work did not start from a blank page. Over the two years before it, I had worked on the same platform market by market, and that work was the evidence base the European system was built on.
+I had worked on the platform market by market for two years before this, so we didn't start cold. A review of nine live markets showed the same problems everywhere: ten or eleven items in the main menu, related content scattered, support buried. The analytics told the rest. In one market the tasks page took over three quarters of all views, and almost half of those people left without opening anything else. Retailers came for a task and went.
 
-It began with a review of nine live markets, from Lithuania and Poland to Mexico and Vietnam, documenting each one's content architecture and where it broke down. The pattern was consistent: primary navigation with ten or eleven top-level links, related content scattered across unrelated sections, support buried, and users who completed a task and left without exploring anything else. Platform analytics across the markets we could instrument showed where retailers actually went: in one, the tasks page carried over three-quarters of all views, and almost half left without opening another page. The retailers themselves said the same thing: interviews in Algeria and other markets showed people who did not use the primary menu at all, came for the task, and left. The proposed architecture that came out of it clustered everything into six top-level groups, and we validated it by walking eight user stories, ordered by estimated frequency, through the structure screen by screen: complete a task, choose a reward, register a sale, find business advice, learn a brand. The IA went through three iterations before it held.
-
-So when the European markets came to the table, the question of what retailers actually did on the platform had an answer before anyone in the room had an opinion.
+That led to a six-group architecture, which we tested by walking eight real user stories through it screen by screen. It took three rounds before it held. By the time the markets were in the room, "what do retailers actually do here?" had an answer that wasn't anyone's opinion.
 
 ::image pair s2-menus.jpg s2-analytics.jpg
-Left, three markets' mobile menus from the nine-market review; the one on the right has eleven top-level links. Right, the analytics behind the architecture: behaviour flow, page depth and tasking trends. Almost half of retailers who reached My Tasks left without visiting another page.
+Left, three markets' menus from the nine-market review. Right, the analytics: almost half of retailers who reached My Tasks left without visiting another page.
 
-### 3. Define the constraints before designing to them
+### 3. Finding the sweet spot between HQ and the markets
 
-The first phase moved quickly: components went through review on both sides with little resistance. The harder part came when the markets began to engage in detail with what they needed. Requests arrived that went beyond the original scope, and it was not clear which of them the programme could absorb. The scope had been set in terms of features, not limits.
+This was the political part. The markets wanted a lot of components, each tuned to their own catalogue. HQ wanted as few new builds as possible, to protect the timeline and keep the system maintainable. Both had a point.
 
-So I asked head office for a different kind of answer: not what they wanted, but what was fixed. The non-negotiables turned out to be about build complexity and timeline rather than brand or governance, and they were fewer than anyone had assumed. Once they were written down, every market request could be assessed against something concrete, and most of them fit.
+Honestly, I wanted more components too. My workaround was to put every market request through one question first: can an existing component do this with a CSS change to colour, layout, order or density? Most could. That left a short list that genuinely needed building, and I took that list to HQ with the research behind it.
 
-That changed how the programme ran. Germany, with the most demanding requirements, became the proxy for every market: the variants it needed went into the shared system for all of them. The first release shipped with components that had originally been scoped for phase two, because the room to build them had been there all along; it just had not been named. The trade-off was real: smaller markets inherited a heavier system than they would have chosen on their own. Letting the most demanding market set the ceiling was the right call for the programme, not for every market in it.
+A good example: one market asked for a separate task-management component to push mandatory retailer actions, while others wanted campaigns and incentives at the top. Building for both meant new components to maintain for every market. I kept the shared dashboard card and recommended approved variants based on the type and urgency of the content, so a mandatory action looks and behaves like one without a new build.
+
+We agreed the short list in regional workshops with the markets and HQ together. Some markets gave up control over layouts and content they had asked for. In return they got a system that shipped on time and that HQ could keep running.
 
 ::image pair s3-component-library.jpg s3-variants.jpg
-The limit was build effort, not brand. Once named, there was more room than anyone assumed. Left, the design system: palettes, button states and input fields. Right, the same Rewards template in two configurations; the rewards carousel on the right was a phase-two variant that shipped in release one.
+Left, the shared design system. Right, the same Rewards template in two market configurations: restyled, not rebuilt.
 
-### 4. One hierarchy that fourteen markets could rearrange
+### 4. One hierarchy, rearranged per market
 
-The information architecture had three sets of requirements to reconcile. The IQOS brand team had commercial reasons to want their products in primary navigation. Compliance ruled that certain product groupings could not appear together, whatever any market or brand preferred. And every market had a view of the hierarchy that suited its own catalogue.
+Three groups pulled at the IA. The IQOS brand team wanted products in the main navigation. Compliance ruled that some product groups could not appear together. Every market wanted the hierarchy that suited its own catalogue.
 
-The approach was the same as for the components: get everyone on one call, walk through the high-level IA together, and let the research settle the groupings. When a market or a brand pushed for a structure, the answer was not an opinion; it was the nine-market review and the user-story walkthroughs showing what retailers did when they had it. Compliance set the hard boundaries. Research decided the rest. Within that, markets kept the freedom to reorder.
+Compliance set the hard lines, the research settled the rest, and inside that each market could reorder. The same homepage card carries a different task order in every market, because the order is a market setting and the card isn't.
 
 ::image pair s3-ia.jpg s4-same-component.jpg
-Compliance drew the boundaries. Research settled the arguments inside them. Left, the six-group architecture from the platform review; right, the homepage and My Tasks built from the same card component. The detail: the same homepage dashboard component carries a different task hierarchy in every market, because the order of the cards is a market-level variable and the card itself is not. That is what let fourteen markets ship from one system without fourteen designs.
+Left, the six-group architecture. Right, the homepage and My Tasks built from the same card component.
 
 ### 5. Results
 
-Time on platform rose 32% and task submission 12.6% across the unified platform. The five launch markets went live on one component system, each with its own hierarchy, and it has since been rolled out to fourteen. The design decisions mattered, but the one that changed the project was getting the constraints defined early, and the one that made that possible was two years of evidence that meant nobody had to argue from instinct.
+Retailer task completion rose from 62% to 75% on average, and new markets launched in 10 weeks instead of 16 because they configured what already existed. Time on platform went up 32%. That matters here: the platform exists to educate retailers about the products as much as to sell them, which is why the learning sits inside tasks with rewards. We launched with four markets and reached fourteen before I left. The system has since gone worldwide.
 
 ::image full s5-live-platform.jpg
-One system, fourteen hierarchies. Rewards and the smoke-free product section on the shipped template; every market reorders the same cards for its own catalogue.
+One system, fourteen hierarchies: every market reorders the same cards for its own catalogue.

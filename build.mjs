@@ -139,7 +139,7 @@ function metrics(s) {
   const items = s.outcomes || [];
   const big = [], small = [];
   for (const o of items) {
-    const m = o.match(/^([£$]?\d[\d,.]*[%KMk]?(?:\s?(?:to|→)\s?\d+)?)\s+(.*)$/);
+    const m = o.match(/^([+−-]?[£$]?\d[\d,.]*[%KMk]?(?:\s?(?:to|→)\s?\d+)?)\s+(.*)$/);
     if (m && big.length < 4) big.push([m[1], m[2]]); else small.push(o);
   }
   if (!items.length) return "";
