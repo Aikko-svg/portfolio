@@ -46,7 +46,7 @@ Because the developers were rebuilding components rather than reusing them, scre
 The design system underneath is tokenised and aligned to shadcn and Tailwind so that a variant in Figma maps to a variant in code. Missions is the clearest example of why that mattered: one tier colour token drives every component in the hub across four tiers, the countdown switches to an hh:mm:ss urgent state under 24 hours and fires the failed modal itself at zero, and the six-page mobile explainer condenses to three on desktop. All of that is a handful of rules, not a hundred extra screens.
 
 ::image pair s3-cashier-spec.jpg s3-cashier-screen.jpg
-86 rules for the money. Left, the Cashier behaviour spec; right, one of the deposit screens it governs, with the bonus capitalisation bar it describes.
+86 rules for the money. Left, the Cashier behaviour spec; right, two of the withdrawal states it defines: the method list with the withdrawable balance, and a request pending review with the reversal still available.
 
 ### 4. Compliance you can see
 

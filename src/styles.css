@@ -94,6 +94,7 @@ p { margin: 0 0 var(--s3); }
 /* Metrics strip under the lede */
 .metrics { margin: 0 0 var(--s5); }
 .metrics-big { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s2); }
+@media (max-width: 639.98px) { .metric { padding: var(--s2); } .metric strong { font-size: 34px; } .metric span { font-size: 13px; } }
 @media (min-width: 640px) { .metrics-big { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
 .metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--s3); display: grid; gap: 6px; }
 .metric strong { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1; letter-spacing: -0.01em; }

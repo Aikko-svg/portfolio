@@ -106,10 +106,12 @@ ${body}
 </html>`;
 }
 
-function heroImg(s) {
+function heroImg(s, withMobile = false) {
   const p = join(ROOT, "public", "images", s.slug, s.hero || "");
+  const m = join(ROOT, "public", "images", s.slug, "hero-m.jpg");
+  const img = `<img src="/images/${s.slug}/${s.hero}" width="1440" height="810" alt="${esc(s.heroAlt || "")}" fetchpriority="high">`;
   return existsSync(p)
-    ? `<img src="/images/${s.slug}/${s.hero}" width="1440" height="810" alt="${esc(s.heroAlt || "")}" fetchpriority="high">`
+    ? (withMobile && existsSync(m) ? `<picture><source media="(max-width: 639px)" srcset="/images/${s.slug}/hero-m.jpg" width="800" height="1000">${img}</picture>` : img)
     : `<div class="ph" style="aspect-ratio:1440/810"><span>hero · 1440 × 810</span></div>`;
 }
 
@@ -150,7 +152,7 @@ function caseStudyPage(s, prev, next) {
     <h1 class="study-title">${esc(s.title)}</h1>
     <p class="study-lede">${esc(s.oneLiner)}</p>
     ${metrics(s)}
-    <div class="hero">${heroImg(s)}</div>
+    <div class="hero">${heroImg(s, true)}</div>
     <div class="body">
       <div class="narrative">${s.html}</div>
       ${panel(s)}
