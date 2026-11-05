@@ -63,5 +63,7 @@ Left, a broadband fault in progress: the fault type sets the questions. Right, t
 
 Within three months, misdispatch costs were down £184K, reported by the same head of second line who had tracked the fines. Ticket errors reaching second line fell 56%. Handling time on fault calls dropped 17%, mostly because advisers stopped re-raising the same fault. Seeing a ticket's status inside the customer record helped too: advisers could tell a fault was already open before raising another.
 
+What I'd do differently: start with the cross-department workshop instead of ending up there. We lost weeks consulting each team separately before we learned that one room, deciding things once, was the only way decisions stuck.
+
 ::image full s5-tracker.jpg
 The fault tracker: every open ticket, its priority and progress, and the same status panel on the right.
