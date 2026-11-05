@@ -58,38 +58,38 @@ DEMOS["lucky-cashier"] = (root) => {
   const method = (logo, cls, name, sub, extra = "") => `<div class="lr-row ${extra}"><span class="lr-logo ${cls}">${logo}</span><span class="grow">${name}${sub ? `<small>${sub}</small>` : ""}</span><span class="lr-chev">›</span></div>`;
   const pend = (amt, via, when) => `<div class="lr-row lr-pend"><span class="lr-chev">◷</span><span class="grow"><b>${amt}</b><span class="lr-tag">Pending</span><small>${via} · ${when}</small></span><span class="lr-rev">↺ Reverse</span></div>`;
   root.innerHTML = `
-  <div class="d-seg" role="tablist" aria-label="Player">
-    <button role="tab" aria-selected="true" data-p="new">First deposit</button>
-    <button role="tab" aria-selected="false" data-p="returning">Returning player</button>
+  <div class="d-seg" role="group" aria-label="Show the cashier for">
+    <button type="button" aria-pressed="true" data-p="new">First deposit</button>
+    <button type="button" aria-pressed="false" data-p="returning">Returning player</button>
   </div>
   <div class="d-body" style="margin-top:24px">
-    <div class="lr" data-player="new" aria-label="Cashier, recreated from the shipped design">
+    <div class="lr" role="group" data-player="new" aria-label="Cashier, recreated from the shipped design">
       <div class="lr-head"><div class="lr-tabs"><span class="on">Deposit</span><span>Withdraw</span></div><span class="lr-bal">$200</span><span class="lr-x">×</span></div>
       <div class="lr-only" data-flash><div>${pend("$200", "Interac", "2h ago")}${pend("$120", "MiFinity", "3 days ago")}</div></div>
-      <h5>Select bonus</h5>
+      <p class="lr-h">Select bonus</p>
       <div class="lr-bonus">
         <div class="lr-row"><span class="lr-check on">✓</span><span class="grow">First Deposit Bonus<small>100% match up to $1,000 + 50 Free Spins</small></span></div>
         <div class="lr-row"><span class="lr-check"></span><span class="grow">No thanks, I'll skip the bonus this time</span></div>
       </div>
       <div class="lr-new">
-        <h5>Popular methods</h5>
+        <p class="lr-h">Popular methods</p>
         ${method("Interac", "interac", "Interac", "$20 - $10,000")}
         ${method("VISA", "visa", "VISA / Mastercard", "$20 - $10,000")}
         ${method("MiFinity", "", "MiFinity", "$20 - $10,000")}
-        <h5>Other methods</h5>
+        <p class="lr-h">Other methods</p>
         ${method("Crypto", "", "See more payment methods", "")}
       </div>
       <div class="lr-ret" data-flash>
-        <h5>Saved methods</h5>
+        <p class="lr-h">Saved methods</p>
         ${method("VISA", "visa", "•••• 1772", "Last used · Default", "lr-sel")}
         ${method("VISA", "visa", "•••• 8900", "Saved card")}
-        <h5>Other methods</h5>
+        <p class="lr-h">Other methods</p>
         ${method("Interac", "interac", "Interac", "$20 - $10,000")}
       </div>
     </div>
     <div class="d-side">
-      <h4>One screen, two players</h4>
-      <p class="d-msg"></p>
+      <h3>One screen, two players</h3>
+      <p class="d-msg" aria-live="polite"></p>
       <dl class="d-count">
         <dt>Deposit journeys to build</dt><dd>1, not 2</dd>
         <dt>Cashier behaviour rules</dt><dd>86, one spec</dd>
@@ -104,7 +104,7 @@ DEMOS["lucky-cashier"] = (root) => {
   };
   const set = (p, flash) => {
     lr.dataset.player = p; msg.textContent = copy[p];
-    root.querySelectorAll(".d-seg button").forEach((b) => b.setAttribute("aria-selected", b.dataset.p === p));
+    root.querySelectorAll(".d-seg button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.p === p));
     if (flash && p === "returning") lr.querySelectorAll("[data-flash]").forEach((el) => { el.classList.remove("lr-flash"); void el.offsetWidth; el.classList.add("lr-flash"); });
   };
   root.querySelectorAll(".d-seg button").forEach((b) => b.addEventListener("click", () => set(b.dataset.p, true)));

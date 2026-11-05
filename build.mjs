@@ -182,7 +182,7 @@ function caseStudyPage(s, prev, next) {
   <figure class="wrap hero"><div style="view-transition-name: img-${s.slug}">${heroImg(s, true)}</div></figure>
   <div class="wrap">
     ${facts(s)}
-    <div class="narrative">${s.html}</div>
+    <div class="narrative">${s.html.replace(/<(\/?)h3/g, "<$1h2")}</div>
   </div>
   <nav class="wrap prevnext" aria-label="More work">
     <a href="/work/${prev.slug}/" rel="prev" data-key="ArrowLeft"><span>Previous</span>${esc(prev.title)}</a>
