@@ -51,9 +51,6 @@ Rather than argue, I tested it. Six participants had to understand what auto-ren
 
 I took the recordings and quotes to the director-level review. It wasn't my opinion against theirs; it was six customers looking in one spot. The client moved the control to where users had pointed.
 
-::image full s3-auto-renew.jpg
-Where the client first put it: a row inside Settings, then its own screen, then an "Are you sure?" step before you could opt out.
-
 ### 4. Results
 
 All of this ran inside six months, alongside My Account and live-site fixes. Keeping two rounds of usability testing in that schedule was deliberate, and the auto-renewal finding is why it paid off.
