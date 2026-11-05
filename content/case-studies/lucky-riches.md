@@ -20,7 +20,7 @@ outcomes:
   - 28% of new accounts made a first deposit
   - 11 of 12 usability participants completed every key task, from registration to withdrawal
   - One cashier for new and returning players, instead of a separate quick-deposit build
-  - Live in 2026. Figures reported by the founders after launch
+  - Live since the end of August 2026. Figures reported by the founders, covering launch to early November
 ---
 
 ### 1. Not a reskin
