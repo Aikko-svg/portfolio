@@ -58,8 +58,8 @@ The fault-raising and triage template was mine. I took the contradictory require
 
 I tested each iteration with first-line advisers before it went near the platform engineers, then worked with them through implementation. The detail I would point to is the validation: the adviser sees why a field matters at the moment they are filling it in, not in a rejection the next day.
 
-::image pair s4-guided-entry.jpg s4-escalation-gate.jpg
-Left, guided fault entry: the stepper, the symptom choice, and a failed line test that tells the adviser what happens next. Right, the review gate: six escalation requirements, all met, before the ticket can go to an engineer.
+::image pair s4-guided-entry.jpg s4-raised-ticket.jpg
+Left, guided fault entry: the stepper, the symptom choice, and a failed line test that tells the adviser what happens next. Right, the raised ticket as the adviser sees it: SLA clock, resolution stage and the adviser–engineer activity in one panel.
 
 ### 5. Structure in, errors out
 
