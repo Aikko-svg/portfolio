@@ -148,7 +148,7 @@ function heroImg(s, withMobile = false) {
 }
 
 function facts(s) {
-  const row = (k, v) => v ? `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
+  const row = (k, v) => v ? `<div class="f-${k.toLowerCase()}"><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
   return `<dl class="facts">${row("Role", s.role)}${row("Client", s.client)}${row("Year", s.year)}${row("Team", s.team)}</dl>`;
 }
 

@@ -69,7 +69,7 @@ DEMOS["lucky-cashier"] = (root) => {
     <button type="button" aria-pressed="true" data-p="new">First deposit</button>
     <button type="button" aria-pressed="false" data-p="returning">Returning player</button>
   </div>
-  <div class="d-body" style="margin-top:24px">
+  <div class="d-body">
     <div class="lr" role="group" data-player="new" aria-label="Cashier, recreated from the shipped design">
       <div class="lr-head"><div class="lr-tabs"><span class="on">Deposit</span><span>Withdraw</span></div><span class="lr-bal">$200</span><span class="lr-x">×</span></div>
       <div class="lr-only" data-flash><div>${pend("$200", "Interac", "2h ago")}${pend("$120", "MiFinity", "3 days ago")}</div></div>
