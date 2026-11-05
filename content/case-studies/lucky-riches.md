@@ -3,14 +3,14 @@ slug: lucky-riches
 order: 4
 title: Lucky Riches
 panelTitle: Lucky Riches casino platform
-hook: 90% registration completion, 79% deposit completion. One cashier for every player, and full checks only when they're needed.
-oneLiner: Designing a regulated real-money platform end to end, from discovery to QA, where the hard parts were money, verification and responsible play.
-tags: Product Design, Design Systems, Developer Handoff
+hook: Sole designer, zero to launch. 90% registration completion, 79% deposit completion.
+oneLiner: Designing a regulated casino platform from zero to launch as the sole designer: the cashier, verification, and the design system underneath.
+tags: Product Design, Design Systems, 0 to 1
 year: 2026
-description: Leading design for a bespoke build on a white-label platform: eleven product flows, a tokenised design system that maps to code, and behaviour specs the provider's developers built from.
+description: A bespoke build on a white-label platform where every payment touched three parties. I designed eleven flows, the behaviour specs the developers built from, and the design system underneath.
 client: Lucky Riches, investor-backed
-role: Lead Product Designer, sole designer, fixed-fee engagement from discovery through QA
-team: Product manager, who set priorities and owned conversion calls. Data analyst, marketing, the platform provider's developers, who built it. The payment provider and compliance, who signed off anything touching money or regulation
+role: Lead Product Designer, sole designer, discovery through QA
+team: Product manager, who set priorities and owned conversion calls. The platform provider's developers, who built it. The payment provider and compliance, who signed off anything touching money or regulation
 hero: hero.jpg
 heroAlt: The cashier on desktop with a withdrawal under review on mobile
 outcomes:
@@ -18,43 +18,47 @@ outcomes:
   - 79% deposit completion, from opening the cashier to payment success
   - 74% KYC completion among players who started verification
   - 28% of new accounts made a first deposit
-  - 11 of 12 usability participants completed every key task, from registration to withdrawal
-  - One cashier for new and returning players, instead of a separate quick-deposit build
   - Live since the end of August 2026. Figures reported by the founders, covering launch to early November
 ---
 
-### 1. Not a reskin
+Most white-label casinos are a logo and a colour swap. Here the investors also owned the platform provider and wanted a product of their own, so where the platform's components didn't fit, the developers rebuilt them. I was the only designer, from discovery to QA, and every payment involved three parties: our screens, the provider's shell, and an external payment provider.
 
-Most white-label casinos are a logo and a colour swap on the provider's platform. Lucky Riches was different: the investors also owned the provider, and wanted a product that was theirs. So the brief became "design this" rather than "skin this", and where the platform's components didn't fit, the developers rebuilt them.
+### 1. One cashier for every player
 
-I led design end to end as the only designer, from discovery through to QA sign-off, across eleven flows: sign-in, registration, home, search, bonuses, cashier, in-game, errors, missions, my account and an affiliate page.
+The product manager wanted a separate quick-deposit pop-up for returning players. On paper it was a conversion win. In practice it meant two deposit journeys to build, test and keep in sync, and a third branch the moment a returning player wanted a new card.
 
-### 2. One deposit flow, not two
-
-The deposit didn't belong to any one party. The screens were ours, the shell was the provider's, and once a player confirmed an amount they went off to the payment provider. A lot of the cashier work was getting all three to agree on what each screen did.
-
-The product manager proposed a separate quick-deposit pop-up for returning players. On paper it was a conversion win. In practice it meant two deposit journeys to build, test and keep in sync, and a third branch as soon as a returning player wanted a new card. I argued for one flow with the last-used method pre-selected, so returning players got the speed without a second build. That's what shipped, with pending withdrawals reversible from the same screen. After launch, 79% of players who opened the cashier completed a deposit.
+I argued for one cashier with the last-used method pre-selected. Returning players got the speed without a second build, and pending withdrawals could be reversed from the same screen. That's what shipped: 79% of players who open the cashier complete a deposit.
 
 ::image full s2-one-flow.jpg
-New and returning players on the same screen. The saved method and pending withdrawals appear when they exist, nothing more.
+New and returning players on the same screen. The saved method and pending withdrawals only appear when they exist.
 
-### 3. The spec is the design
-
-Because the developers were rebuilding components, screens on their own weren't enough. Every flow came with numbered behaviour rules, 86 for the cashier alone, covering every state from waiting on the payment provider to each failure. Sign-in uses a generic error so it can't be used to check whether an account exists. In-game, the game never stops: search and deposit open over it.
+Because the developers were rebuilding components, screens weren't enough. Every flow shipped with numbered behaviour rules, 86 for the cashier alone, so every state from waiting on the payment provider to each failure was designed, not left to chance.
 
 ::image full s3-states.jpg
 Every deposit outcome designed up front, next to the real spec the developers built from.
 
-The design system is tokenised and matched to the developers' component library, so a variant in Figma is a variant in code. Missions shows why that mattered: one tier token drives every component across four tiers, so a new tier is a token change, not new screens.
+### 2. The argument I lost, and what it got me
 
-::image full s3-missions.jpg
-The same Missions hub in four tiers, driven by one colour token.
+I pushed back on sending new players straight to the cashier after sign-up. I wanted them to see the product first. The product manager had conversion data from a comparable platform, and it was better evidence than my instinct, so I let it go.
 
-### 4. Compliance you can see
+What I got in return was the shape of verification. Registration asks only what's needed to open an account. Players complete their profile before they play, and full identity checks only come when money leaves. Extra checks switch on when risk rules say so, not for everyone. After launch, 90% of people who started registering finished, and 28% of new accounts made a first deposit. Before launch, 11 of 12 people completed every key task in usability testing, from registration and deposit limits to withdrawals.
 
-Regulated gambling puts verification and responsible-play rules on the product that most apps never face. I treated them as design problems, not legal copy. Verification has four levels, each with a clear status, and the checks are switched on by risk rules the operator controls. Take a Break confirms the exact start and end time before it suspends the account. Restricted countries never appear at registration.
-
-One argument I lost: I pushed back on sending new players straight to the cashier after registration. The product manager had conversion data from a comparable platform, and it was better evidence than my instinct. What I got in return was the shape of verification. Registration asks the minimum, and full documents are only needed at withdrawal. After launch, 90% of people who started registering finished, and 28% of new accounts went on to deposit. We tested registration, deposits, deposit limits, transaction errors and withdrawals with 12 people, and 11 completed every task.
+::image full s2-timeline.jpg
+What each player is asked, and when. Full KYC sits at withdrawal, with risk triggers able to bring checks forward.
 
 ::image full s4-verification.jpg
-Tiered verification with a clear status per level, and Take a Break with its exact times shown before you confirm.
+The verification hub, with a clear status for each level, and Take a Break showing its exact start and end time before you confirm.
+
+### 3. The system underneath
+
+I built the design system from the first week: primitive colour scales in Tailwind-style steps, role tokens on top for surfaces, text and borders, plus spacing, radius and type. The developers built from the same token names, so a variant in Figma was a variant in code. Components were built from other components, so the payment method row is made of the same chips, input and button used everywhere else.
+
+::image full s3-system.jpg
+From token to component to the shipped cashier.
+
+::image full s3-missions.jpg
+Missions shows the range: one template in four tiers, where the tier token sets the colour and each tier gets its own vault and jackpot.
+
+### 4. What I'd do next
+
+KYC is the number I'd go after next. 74% finish it once they start, and I'd want to know exactly where the rest stop before redesigning anything.
