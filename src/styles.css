@@ -84,12 +84,11 @@ p { margin: 0 0 var(--s3); }
 
 .body { display: grid; gap: var(--s6); margin-top: var(--s5); }
 @media (min-width: 1024px) {
-  .body { grid-template-columns: 2fr 1fr; gap: var(--s6); align-items: start; margin-top: var(--s6); }
-  .panel { position: sticky; top: calc(var(--nav-h) + 32px); order: 2; }
-  .narrative { order: 1; }
+  .body { margin-top: var(--s6); }
+
 }
 /* Below 1024px the panel sits under the hero, above the narrative */
-@media (max-width: 1023.98px) { .panel { order: 1; } .narrative { order: 2; } }
+
 
 /* Metrics strip under the lede */
 .metrics { margin: 0 0 var(--s5); }
@@ -116,7 +115,7 @@ p { margin: 0 0 var(--s3); }
 .outcomes li { font-size: 15px; line-height: 1.5; padding: 10px 0; border-top: 1px solid var(--border); }
 .outcomes li:first-child { font-weight: 500; }
 
-.narrative { max-width: 62ch; }
+.narrative > :not(.fig) { max-width: 68ch; }
 .narrative h3 { font-family: var(--serif); font-size: 32px; line-height: 1.15; margin: var(--s6) 0 var(--s3); }
 @media (min-width: 1024px) { .narrative h3 { margin-top: var(--s7); } }
 .narrative h3:first-child { margin-top: 0; }
@@ -153,4 +152,9 @@ figcaption { font-size: 14px; line-height: 1.5; color: var(--text-2); margin-top
   .about-list > div { grid-template-columns: 220px 1fr; }
   .about-list ul { columns: 3; }
   .about-list .single { columns: 1; }
+}
+
+@media (min-width: 1024px) {
+  .panel dl { display: grid; grid-template-columns: 0.6fr 1.4fr 2fr 3fr; gap: var(--s4); padding-top: var(--s3); }
+  .panel .row { grid-template-columns: 1fr; gap: 6px; border-bottom: 0; padding: 0; }
 }

@@ -163,8 +163,8 @@ function caseStudyPage(s, prev, next) {
     ${metrics(s)}
     <div class="hero">${heroImg(s, true)}</div>
     <div class="body">
-      <div class="narrative">${s.html}</div>
       ${panel(s)}
+      <div class="narrative">${s.html}</div>
     </div>
     <nav class="prevnext">${link(prev, "Previous")}${link(next, "Next")}</nav>
   </div>
