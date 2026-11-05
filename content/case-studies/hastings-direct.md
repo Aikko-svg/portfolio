@@ -3,7 +3,7 @@ slug: hastings-direct
 order: 3
 title: Hastings Direct
 panelTitle: Hastings Direct
-hook: Ease of use up 33%, task success up 14%. Same 42 questions.
+hook: Ease of use up 33%, and 14% more users found what they needed. Same 42 questions.
 oneLiner: Restructuring a 42-question car insurance quote journey that underwriting wouldn't let us shorten.
 tags: UX Design, User Research
 year: 2020

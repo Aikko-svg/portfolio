@@ -9,7 +9,8 @@ const OUT = join(ROOT, "dist");
 const SITE = {
   name: "Youcef Laraba",
   email: "youcefjlaraba@gmail.com",
-  tagline: "Product designer. I decipher complex systems into clear, scalable, commercially effective experiences.",
+  tagline: "Senior product designer for products that have got complicated.",
+  lede: "Legacy internal tools, regulated journeys and platforms shared across markets, made simpler to use and cheaper to run.",
 };
 
 // ---------- content ----------
@@ -96,7 +97,7 @@ function shell({ title, body, path = "/" }) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
-<meta name="description" content="${esc(SITE.tagline)}">
+<meta name="description" content="${esc(SITE.tagline + " " + SITE.lede)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -204,7 +205,8 @@ function homePage(studies) {
     body: `
 <section class="intro wrap">
   <h1>${esc(SITE.tagline)}</h1>
-  <p>Seven years across insurance, utilities, B2B retail and regulated gaming. Based in London.</p>
+  <p class="lede">${esc(SITE.lede)}</p>
+  <p>Seven years across insurance, utilities, B2B retail and regulated gaming, in-house and agency. Based in London.</p>
 </section>
 <section class="cards wrap">
   ${studies.map(card).join("\n")}

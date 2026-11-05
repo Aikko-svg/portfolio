@@ -158,3 +158,5 @@ figcaption { font-size: 14px; line-height: 1.5; color: var(--text-2); margin-top
   .panel dl { display: grid; grid-template-columns: 0.6fr 1.4fr 2fr 3fr; gap: var(--s4); padding-top: var(--s3); }
   .panel .row { grid-template-columns: 1fr; gap: 6px; border-bottom: 0; padding: 0; }
 }
+
+.intro .lede { font-size: 21px; line-height: 1.45; color: var(--text); max-width: 44ch; margin-bottom: var(--s2); }
