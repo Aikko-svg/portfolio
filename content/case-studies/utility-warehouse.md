@@ -12,7 +12,7 @@ client: Utility Warehouse, in-house
 role: UX Designer
 team: Programme lead, a director-level sponsor, first-line advisers, head of second line, second-line engineers, Learning and Development, and the William platform engineers
 hero: hero.jpg
-heroAlt: The William ticket status panel beside the adviser's actions list, with SLA and resolution progress
+heroAlt: Guided fault entry in the adviser's customer record: a failed line test triggers second-line escalation and captures the sync data
 outcomes:
   - 56% reduction in ticket quality errors reaching second line
   - £184K saved within three months from reduced engineer misdispatch
@@ -58,8 +58,8 @@ The fault-raising and triage template was mine. I took the contradictory require
 
 I tested each iteration with first-line advisers before it went near the platform engineers, then worked with them through implementation. The detail I would point to is the validation: the adviser sees why a field matters at the moment they are filling it in, not in a rejection the next day.
 
-::image pair s4-guided-entry.jpg s4-raised-ticket.jpg
-Left, guided fault entry: the stepper, the symptom choice, and a failed line test that tells the adviser what happens next. Right, the raised ticket as the adviser sees it: SLA clock, resolution stage and the adviser–engineer activity in one panel.
+::image pair s4-fault-form.jpg s4-raised-ticket.jpg
+Left, a broadband fault in progress: the fault type sets the questions, with help on the ones advisers used to get wrong. Right, the raised ticket as the adviser sees it: SLA clock, resolution stage and the adviser–engineer activity in one panel.
 
 ### 5. Structure in, errors out
 
