@@ -63,7 +63,7 @@ Three groups pulled at the IA. The IQOS brand team wanted products in the main n
 Compliance set the hard lines, the research settled the rest, and inside that each market could reorder. The same homepage card carries a different task order in every market, because the order is a market setting and the card isn't.
 
 ::image full s4-ordering.jpg
-An illustration built from shipped components: each market sets the order, the card stays the same.
+An illustration built from shipped components: one market leads with mandatory tasks, another with a points campaign. Same cards, different order.
 
 ### 5. Results
 
