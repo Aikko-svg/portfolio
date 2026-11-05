@@ -111,7 +111,7 @@ function shell({ title, body, path = "/" }) {
   <div class="wrap nav-in">
     <a class="brand" href="/">${esc(SITE.name)}</a>
     <nav aria-label="Main">
-      <a href="/"${path === "/" ? ' aria-current="page"' : ""}>Work</a>
+      <a href="/work/"${path.startsWith("/work/") ? ' aria-current="page"' : ""}>Work</a>
       <a href="/about/"${path === "/about/" ? ' aria-current="page"' : ""}>About</a>
       <a href="mailto:${SITE.email}" class="copy-email" data-email="${SITE.email}">Copy email</a>
     </nav>
@@ -168,7 +168,7 @@ function caseStudyPage(s, prev, next) {
     body: `
 <article class="study">
   <header class="wrap study-head">
-    <a class="back" href="/">Work</a>
+    <a class="back" href="/work/">Work</a>
     <h1>${esc(s.title)}</h1>
     <p class="study-lede">${esc(s.oneLiner)}</p>
     ${metrics(s)}
@@ -199,24 +199,67 @@ function row(s) {
 </li>`;
 }
 
+// Home (direction B): a horizontal strip of slides. A single line untangles as you move through it.
+const LEAD = { "utility-warehouse": 1 }; // which outcome leads each slide (default: the first)
+function lead(s) {
+  const o = (s.outcomes || [])[LEAD[s.slug] || 0] || "";
+  const m = o.match(/^([+−-]?[£$]?\d[\d,.]*[%KMk]?)\s+(.*)$/);
+  return m ? [m[1], m[2]] : ["", o];
+}
+function slide(s, i) {
+  const [n, t] = lead(s);
+  return `<li class="slide slide-work" data-label="${esc(s.title)}">
+  <p class="slide-label">${esc(s.title)}, ${esc(s.year)}</p>
+  <a class="panel" href="/work/${s.slug}/">
+    <span class="p-num">${esc(n)}</span>
+    <span class="p-text"><span class="p-title">${esc(s.title)}</span><span class="p-claim">${esc(t)}</span></span>
+    <span class="p-img" style="view-transition-name: img-${s.slug}">${heroImg(s)}</span>
+  </a>
+</li>`;
+}
 function homePage(studies) {
   return shell({
     title: `${SITE.name} — Senior Product Designer`,
     path: "/",
     body: `
-<section class="intro wrap">
-  <p class="intro-role">Senior product designer in London</p>
-  <h1>${esc(SITE.tagline)}</h1>
-  <p class="lede">${esc(SITE.lede)}</p>
-  <p class="intro-meta">7+ years across insurance, utilities, B2B and B2C platforms. Agency and in-house.</p>
-</section>
-<section class="wrap work" aria-label="Selected work">
-  <h2 class="work-h">Selected work</h2>
-  <ul class="work-list">
-  ${studies.map(row).join("\n")}
+<section class="strip" aria-label="Introduction and selected work">
+  <div class="strip-sticky">
+    <div class="ticks" aria-hidden="true"></div>
+    <ol class="slides">
+      <li class="slide slide-intro" data-label="Intro">
+        <p class="slide-label">Senior product designer in London</p>
+        <div class="panel panel-intro">
+          <h1>${esc(SITE.tagline)}</h1>
+          <p class="lede">${esc(SITE.lede)}</p>
+          <p class="intro-meta">7+ years across insurance, utilities, B2B and B2C platforms. Agency and in-house.</p>
+        </div>
+      </li>
+      ${studies.map(slide).join("\n")}
+      <li class="slide slide-end" data-label="Contact">
+        <p class="slide-label">Contact</p>
+        <div class="panel panel-end">
+          <p class="end-big">Let's talk.</p>
+          <p class="end-links"><a href="mailto:${SITE.email}" class="copy-email" data-email="${SITE.email}">Copy email</a><a href="/about/">About me</a><a href="/work/">All work</a></p>
+        </div>
+      </li>
+    </ol>
+    <svg class="thread" aria-hidden="true" preserveAspectRatio="none"><path /></svg>
+  </div>
+</section>`,
+  });
+}
+
+function indexPage(studies) {
+  return shell({
+    title: `Work — ${SITE.name}`,
+    path: "/work/",
+    body: `
+<section class="wrap index">
+  <h1>Work</h1>
+  <ul class="index-list">
+  ${studies.map((s) => { const [n, t] = lead(s); return `<li><a href="/work/${s.slug}/"><span class="i-title">${esc(s.title)}</span><span class="i-claim">${esc(n)} ${esc(t)}</span><span class="i-lead" aria-hidden="true"></span><span class="i-year">${esc(s.year)}</span></a></li>`; }).join("\n")}
   </ul>
-</section>
-`,
+</section>`,
   });
 }
 
@@ -257,6 +300,8 @@ cpSync(join(ROOT, "src", "site.js"), join(OUT, "site.js"));
 
 const studies = loadStudies();
 writeFileSync(join(OUT, "index.html"), homePage(studies));
+mkdirSync(join(OUT, "work"), { recursive: true });
+writeFileSync(join(OUT, "work", "index.html"), indexPage(studies));
 mkdirSync(join(OUT, "about"), { recursive: true });
 writeFileSync(join(OUT, "about", "index.html"), aboutPage());
 studies.forEach((s, i) => {
