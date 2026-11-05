@@ -38,6 +38,9 @@ The problems weren't in any one screen. They were in the hand-offs. First line c
 ::image full s2-journey.jpg
 Redrawn from the journey map I built with every department involved. The first call wasn't the problem; what came after it was.
 
+::image full s2-map.jpg
+A section of the original map: each pain point sits above the opportunity it pointed to.
+
 ### 3. Copying the workflow would copy the £1 million
 
 Utility Warehouse was moving from BILL to a new platform, William. The programme lead and sponsor wanted the old fault workflows copied across, the quickest route to the migration deadline. Fair on timing, but copying the workflow meant copying the cost. As a design team we pushed back, and William got a redesigned fault flow instead of a lift and shift.
