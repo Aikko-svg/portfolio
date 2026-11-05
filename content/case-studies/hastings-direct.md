@@ -38,9 +38,6 @@ Our first proposal cut questions. Underwriting pushed back, and they were right:
 
 So the question changed from "how many" to "how". I audited how direct and indirect competitors grouped the same questions, separated the groupings that made sense to customers from the ones that only existed because of a back-office system, and built alternative structures from them. We tested those with users to see which felt shortest for the same number of questions. The winner became three stages, Details, Cover and Quote, with a progress indicator that never adds a step. Jargon was rewritten with compliance in the room, and error messages started telling people how to fix things.
 
-::demo hastings-progress
-Recreated from the old and new journeys. Click Next on each: the old bar sat on step 2 while questions kept coming, the new one always shows what is left.
-
 We brought Hastings' in-house UX team into decisions early too, so the people who'd own the journey after we left had shaped it.
 
 ::image full s2-structure.jpg

@@ -29,8 +29,8 @@ The product manager wanted a separate quick-deposit pop-up for returning players
 
 I argued for one cashier with the last-used method pre-selected. Returning players got the speed without a second build, and pending withdrawals could be reversed from the same screen. That's what shipped: 79% of players who open the cashier complete a deposit.
 
-::image full s2-one-flow.jpg
-New and returning players on the same screen. The saved method and pending withdrawals only appear when they exist.
+::demo lucky-cashier
+Recreated from the shipped cashier. Switch between a first deposit and a returning player: the saved card and pending withdrawals only appear when they exist.
 
 Because the developers were rebuilding components, screens weren't enough. Every flow shipped with numbered behaviour rules, 86 for the cashier alone, so every state from waiting on the payment provider to each failure was designed, not left to chance.
 

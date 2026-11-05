@@ -53,80 +53,62 @@
 // ---------- Live demos ----------
 const DEMOS = {};
 
-// Hastings Direct: the old four-step bar that kept growing, against the three-stage journey.
-DEMOS["hastings-progress"] = (root) => {
-  const Q = {
-    Details: ["What's the registration number?", "Is this your car?", "Is it manual or automatic?", "What's your date of birth?", "How long have you held your licence?", "Any claims in the last 5 years?"],
-    Cover: ["What do you mainly use the car for?", "Roughly how many miles a year?", "Where is it kept overnight?", "How much voluntary excess?", "When should cover start?"],
-    Quote: ["Which policy would you like?"],
-  };
-  const after = Object.entries(Q).flatMap(([stage, qs]) => qs.map((q, i) => ({ stage, q, i, n: qs.length })));
-  // Old journey: four steps on the bar, but step 2 never ends.
-  const before = after.slice(0, 11).map((x, k) => ({ q: x.q, step: k < 3 ? 1 : 2 }));
+// Lucky Riches: one cashier for new and returning players, instead of a second quick-deposit build.
+DEMOS["lucky-cashier"] = (root) => {
+  const method = (logo, cls, name, sub, extra = "") => `<div class="lr-row ${extra}"><span class="lr-logo ${cls}">${logo}</span><span class="grow">${name}${sub ? `<small>${sub}</small>` : ""}</span><span class="lr-chev">›</span></div>`;
+  const pend = (amt, via, when) => `<div class="lr-row lr-pend"><span class="lr-chev">◷</span><span class="grow"><b>${amt}</b><span class="lr-tag">Pending</span><small>${via} · ${when}</small></span><span class="lr-rev">↺ Reverse</span></div>`;
   root.innerHTML = `
-  <div class="d-top">
-    <div class="d-seg" role="tablist" aria-label="Version">
-      <button role="tab" aria-selected="true" data-mode="before">Before</button>
-      <button role="tab" aria-selected="false" data-mode="after">After</button>
-    </div>
-    <button class="d-reset" type="button">Start again</button>
+  <div class="d-seg" role="tablist" aria-label="Player">
+    <button role="tab" aria-selected="true" data-p="new">First deposit</button>
+    <button role="tab" aria-selected="false" data-p="returning">Returning player</button>
   </div>
-  <div class="d-body">
-    <div class="d-phone" data-mode="before">
-      <div class="d-bar" aria-hidden="true"></div>
-      <div class="d-q"><p class="d-label"></p><div class="d-input"></div></div>
-      <button class="d-next" type="button">Next</button>
-      <div class="d-end" hidden></div>
+  <div class="d-body" style="margin-top:24px">
+    <div class="lr" data-player="new" aria-label="Cashier, recreated from the shipped design">
+      <div class="lr-head"><div class="lr-tabs"><span class="on">Deposit</span><span>Withdraw</span></div><span class="lr-bal">$200</span><span class="lr-x">×</span></div>
+      <div class="lr-only" data-flash><div>${pend("$200", "Interac", "2h ago")}${pend("$120", "MiFinity", "3 days ago")}</div></div>
+      <h5>Select bonus</h5>
+      <div class="lr-bonus">
+        <div class="lr-row"><span class="lr-check on">✓</span><span class="grow">First Deposit Bonus<small>100% match up to $1,000 + 50 Free Spins</small></span></div>
+        <div class="lr-row"><span class="lr-check"></span><span class="grow">No thanks, I'll skip the bonus this time</span></div>
+      </div>
+      <div class="lr-new">
+        <h5>Popular methods</h5>
+        ${method("Interac", "interac", "Interac", "$20 - $10,000")}
+        ${method("VISA", "visa", "VISA / Mastercard", "$20 - $10,000")}
+        ${method("MiFinity", "", "MiFinity", "$20 - $10,000")}
+        <h5>Other methods</h5>
+        ${method("Crypto", "", "See more payment methods", "")}
+      </div>
+      <div class="lr-ret" data-flash>
+        <h5>Saved methods</h5>
+        ${method("VISA", "visa", "•••• 1772", "Last used · Default", "lr-sel")}
+        ${method("VISA", "visa", "•••• 8900", "Saved card")}
+        <h5>Other methods</h5>
+        ${method("Interac", "interac", "Interac", "$20 - $10,000")}
+      </div>
     </div>
     <div class="d-side">
-      <p class="d-status" aria-live="polite"></p>
-      <p class="d-note"></p>
+      <h4>One screen, two players</h4>
+      <p class="d-msg"></p>
+      <dl class="d-count">
+        <dt>Deposit journeys to build</dt><dd>1, not 2</dd>
+        <dt>Cashier behaviour rules</dt><dd>86, one spec</dd>
+        <dt>Deposit completion</dt><dd>79% since launch</dd>
+      </dl>
     </div>
   </div>`;
-  const $ = (s) => root.querySelector(s);
-  const phone = $(".d-phone"), bar = $(".d-bar"), label = $(".d-label"), status = $(".d-status"), note = $(".d-note"), end = $(".d-end"), next = $(".d-next");
-  let mode = "before", i = 0;
-
-  const render = () => {
-    phone.dataset.mode = mode; end.hidden = true; next.hidden = false; $(".d-q").hidden = false;
-    if (mode === "before") {
-      const cur = before[Math.min(i, before.length - 1)];
-      bar.innerHTML = [1, 2, 3, 4].map((k) => `<span class="${k < cur.step ? "done" : k === cur.step ? "cur" : ""}">${k}</span>`).join("");
-      label.textContent = cur.q;
-      status.textContent = `Question ${Math.min(i, before.length - 1) + 1}. Still step ${cur.step} of 4.`;
-      note.textContent = i < 4 ? "Four steps, the bar says. Keep going." : "The bar hasn't moved. You can't tell how much is left.";
-      if (i >= before.length) {
-        $(".d-q").hidden = true; next.hidden = true; end.hidden = false;
-        end.innerHTML = `<p>“It says it has four steps, but it keeps adding and adding questions.”</p><span>Usability test participant</span>`;
-        status.textContent = "11 questions in, still on step 2 of 4";
-        note.textContent = "Only 7 of 11 testers reached a price on the old journey.";
-      }
-    } else {
-      const cur = after[Math.min(i, after.length - 1)];
-      const stages = Object.keys(Q), si = stages.indexOf(cur.stage);
-      const doneQs = i, total = after.length;
-      bar.innerHTML = `<div class="d-track"><i style="width:${Math.min(100, (doneQs / (total - 1)) * 100)}%"></i></div>` +
-        stages.map((s, k) => `<span class="${k < si ? "done" : k === si ? "cur" : ""}"><b>${k < si ? "✓" : k + 1}</b>${s}</span>`).join("");
-      label.textContent = cur.q;
-      status.textContent = `${cur.stage}: question ${cur.i + 1} of ${cur.n}`;
-      note.textContent = "Three stages, fixed from the first screen. The bar fills, it never grows.";
-      if (i >= after.length) {
-        $(".d-q").hidden = true; next.hidden = true; end.hidden = false;
-        bar.querySelectorAll("span").forEach((s) => s.className = "done");
-        end.innerHTML = `<p class="d-price">Your quote is ready</p><span>Every question answered, no surprises on the way</span>`;
-        status.textContent = "Quote reached";
-        note.textContent = "Same questions. Clearer grouping, and you always know what's left.";
-      }
-    }
+  const lr = root.querySelector(".lr"), msg = root.querySelector(".d-msg");
+  const copy = {
+    new: "A new player picks a bonus and a method from scratch. Switch to a returning player and watch what changes.",
+    returning: "Same cashier. The last-used card is pre-selected and pending withdrawals can be reversed in place. That's the speed the quick-deposit pop-up promised, without a second journey to build and keep in sync.",
   };
-  next.addEventListener("click", () => { i++; render(); });
-  $(".d-reset").addEventListener("click", () => { i = 0; render(); next.focus(); });
-  root.querySelectorAll(".d-seg button").forEach((b) => b.addEventListener("click", () => {
-    mode = b.dataset.mode; i = 0;
-    root.querySelectorAll(".d-seg button").forEach((x) => x.setAttribute("aria-selected", x === b));
-    render();
-  }));
-  render();
+  const set = (p, flash) => {
+    lr.dataset.player = p; msg.textContent = copy[p];
+    root.querySelectorAll(".d-seg button").forEach((b) => b.setAttribute("aria-selected", b.dataset.p === p));
+    if (flash && p === "returning") lr.querySelectorAll("[data-flash]").forEach((el) => { el.classList.remove("lr-flash"); void el.offsetWidth; el.classList.add("lr-flash"); });
+  };
+  root.querySelectorAll(".d-seg button").forEach((b) => b.addEventListener("click", () => set(b.dataset.p, true)));
+  set("new");
 };
 
 document.querySelectorAll("[data-demo]").forEach((fig) => {
