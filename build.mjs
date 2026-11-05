@@ -200,7 +200,7 @@ function card(s) {
 
 function homePage(studies) {
   return shell({
-    title: `${SITE.name} — Product Designer`,
+    title: `${SITE.name} — Senior Product Designer`,
     path: "/",
     body: `
 <section class="intro wrap">
