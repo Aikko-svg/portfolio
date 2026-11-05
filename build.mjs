@@ -27,6 +27,13 @@ function parseFrontmatter(src) {
   return { meta, body: m[2] };
 }
 
+// Retina: name@2x.jpg sits next to name.jpg when it was rebuilt from 2x Figma exports.
+function srcset(slug, f, w, sizes) {
+  const x2 = f.replace(/\.jpg$/, "@2x.jpg");
+  if (!existsSync(join(ROOT, "public", "images", slug, x2))) return "";
+  return ` srcset="/images/${slug}/${f} ${w}w, /images/${slug}/${x2} ${w * 2}w" sizes="${sizes}"`;
+}
+
 function renderBody(body, slug) {
   // Custom image directives:
   //   ::image full file.jpg        (next line = caption)
@@ -40,16 +47,16 @@ function renderBody(body, slug) {
     const caption = (lines[i + 1] || "").trim();
     const alt = caption.replace(/[*_`]/g, "").split(/(?<=\.)\s/)[0];
     i += 1;
-    const img = (f, w, h) => {
+    const img = (f, w, h, sizes) => {
       const p = join(ROOT, "public", "images", slug, f);
       const exists = existsSync(p);
       return exists
-        ? `<img src="/images/${slug}/${f}" width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}">`
+        ? `<img src="/images/${slug}/${f}"${srcset(slug, f, w, sizes)} width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}">`
         : `<div class="ph" style="aspect-ratio:${w}/${h}"><span>${f}<br>${w} × ${h}</span></div>`;
     };
     const inner = d[1] === "full"
-      ? img(files[0], 1440, 810)
-      : `<div class="pair">${img(files[0], 1440, 960)}${img(files[1], 1440, 960)}</div>`;
+      ? img(files[0], 1440, 810, "(min-width: 1024px) 760px, 100vw")
+      : `<div class="pair">${img(files[0], 1440, 960, "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw")}${img(files[1], 1440, 960, "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw")}</div>`;
     out.push(`<figure class="fig fig-${d[1]}">${inner}${caption ? `<figcaption>${marked.parseInline(caption)}</figcaption>` : ""}</figure>`);
   }
   return marked.parse(out.join("\n"));
@@ -109,9 +116,11 @@ ${body}
 function heroImg(s, withMobile = false) {
   const p = join(ROOT, "public", "images", s.slug, s.hero || "");
   const m = join(ROOT, "public", "images", s.slug, "hero-m.jpg");
-  const img = `<img src="/images/${s.slug}/${s.hero}" width="1440" height="810" alt="${esc(s.heroAlt || "")}" fetchpriority="high">`;
+  const sizes = withMobile ? "(min-width: 1280px) 1184px, 100vw" : "(min-width: 1024px) 700px, 100vw";
+  const img = `<img src="/images/${s.slug}/${s.hero}"${srcset(s.slug, s.hero || "", 1440, sizes)} width="1440" height="810" alt="${esc(s.heroAlt || "")}" fetchpriority="high">`;
+  const m2 = existsSync(join(ROOT, "public", "images", s.slug, "hero-m@2x.jpg")) ? `, /images/${s.slug}/hero-m@2x.jpg 1600w` : "";
   return existsSync(p)
-    ? (withMobile && existsSync(m) ? `<picture><source media="(max-width: 639px)" srcset="/images/${s.slug}/hero-m.jpg" width="800" height="1000">${img}</picture>` : img)
+    ? (withMobile && existsSync(m) ? `<picture><source media="(max-width: 639px)" srcset="/images/${s.slug}/hero-m.jpg 800w${m2}" sizes="100vw" width="800" height="1000">${img}</picture>` : img)
     : `<div class="ph" style="aspect-ratio:1440/810"><span>hero · 1440 × 810</span></div>`;
 }
 
