@@ -208,7 +208,7 @@ function homePage(studies) {
   <p class="intro-role">Senior product designer in London</p>
   <h1>${esc(SITE.tagline)}</h1>
   <p class="lede">${esc(SITE.lede)}</p>
-  <p class="intro-meta">7+ years across insurance, utilities, B2B commerce and regulated consumer platforms. Agency and in-house.</p>
+  <p class="intro-meta">7+ years across insurance, utilities, B2B and B2C platforms. Agency and in-house.</p>
 </section>
 <section class="wrap work" aria-label="Selected work">
   <h2 class="work-h">Selected work</h2>
