@@ -10,7 +10,7 @@ const SITE = {
   name: "Youcef Laraba",
   email: "youcefjlaraba@gmail.com",
   tagline: "Making complex products simpler to use and cheaper to run.",
-  lede: "Most of my work is in legacy systems, regulated journeys and platforms run across several markets.",
+  lede: "I work on legacy systems, regulated customer journeys and platforms that span several markets.",
 };
 
 // ---------- content ----------
