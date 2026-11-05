@@ -12,7 +12,7 @@ client: Hastings Direct, via Wunderman Thompson
 role: UX Designer. I owned the journey map with our UX researcher, the competitor grouping audit, the grouping tests and the auto-renewal test
 team: Head of UX, two senior UX designers, UX researcher, UI designer, account manager. Underwriting decided which questions stayed, compliance approved the wording, client directors signed off the changes
 hero: hero.jpg
-heroAlt: The new quote journey on mobile: the registration lookup, choosing a policy, and the online versus standard policy choice
+heroAlt: The new quote page on desktop, with the policy step on mobile
 outcomes:
   - 33% increase in reported ease of use, from the same customer survey before launch and six months after
   - 14% more users said they found what they needed, same survey
@@ -40,8 +40,8 @@ So the question changed from "how many" to "how". I audited how direct and indir
 
 We brought Hastings' in-house UX team into decisions early too, so the people who'd own the journey after we left had shaped it.
 
-::image full s2-found-it-desktop.jpg
-The new structure: Details, Cover, Quote. The indicator never adds a step, and the first thing the form does is return your car by name.
+::image full s2-structure.jpg
+The new structure on desktop and mobile: Details, Cover, Quote. The indicator never adds a step, and the first thing the form does is return your car by name.
 
 ### 3. Six people looked in the same place
 
@@ -57,5 +57,5 @@ All of this ran inside six months, alongside My Account and live-site fixes. Kee
 
 Six months after launch, the same customer survey showed reported ease of use up 33% and 14% more users saying they found what they needed. None of it came from cutting questions. It came from regrouping the same 42. Marketing also agreed to swap promotional messages at the quote reveal for reassurance, once they saw every tester say they'd drop off at the upsell page.
 
-::image full s4-policy-comparison.jpg
-The policy step: excess and start date first, then one choice between two policies, with the cheaper one pre-selected and the difference spelled out.
+::image full s4-after.jpg
+After: the same 42 questions as three clear steps. The car comes back by name, the indicator never adds a step, and the cheaper policy is pre-selected with the difference spelled out.
