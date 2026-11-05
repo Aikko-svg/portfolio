@@ -42,8 +42,8 @@ p { margin: 0 0 1.1em; }
 /* Home intro */
 .intro { padding-top: 80px; padding-bottom: 72px; }
 .intro-role { color: var(--ink-2); font-size: 15px; margin-bottom: 20px; }
-.intro h1 { font-size: clamp(40px, 5.4vw, 72px); line-height: 1.0; letter-spacing: -0.045em; max-width: 16ch; margin-bottom: 32px; }
-.lede { font-size: clamp(19px, 1.6vw, 22px); line-height: 1.45; max-width: 40ch; margin-bottom: 14px; }
+.intro h1 { font-size: clamp(32px, 4vw, 56px); line-height: 1.05; letter-spacing: -0.04em; max-width: 22ch; text-wrap: balance; margin-bottom: 32px; }
+.lede { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.45; max-width: 46ch; color: var(--ink-2); margin-bottom: 14px; }
 .intro-meta { color: var(--ink-2); font-size: 15px; max-width: 52ch; }
 
 /* Work list */

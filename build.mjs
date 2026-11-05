@@ -9,8 +9,8 @@ const OUT = join(ROOT, "dist");
 const SITE = {
   name: "Youcef Laraba",
   email: "youcefjlaraba@gmail.com",
-  tagline: "Making complex products simpler to use and cheaper to run.",
-  lede: "I work on legacy systems, regulated customer journeys and platforms that span several markets.",
+  tagline: "I make complex products clear, for the people who use them and the business behind them.",
+  lede: "7+ years designing platforms, customer journeys and design systems, in-house and agency, across insurance, utilities, B2B and B2C.",
 };
 
 // ---------- content ----------
@@ -214,7 +214,6 @@ function homePage(studies) {
   <p class="intro-role">Senior product designer in London</p>
   <h1>${esc(SITE.tagline)}</h1>
   <p class="lede">${esc(SITE.lede)}</p>
-  <p class="intro-meta">7+ years across insurance, utilities, B2B and B2C platforms. Agency and in-house.</p>
 </section>
 <section class="wrap work" aria-label="Selected work">
   <h2 class="work-h">Selected work</h2>
