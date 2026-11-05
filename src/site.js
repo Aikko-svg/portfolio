@@ -2,6 +2,13 @@
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // A new page always opens at the top. Back and forward keep their place.
+  const toTop = () => { if (!location.hash) window.scrollTo(0, 0); };
+  try {
+    const nav = performance.getEntriesByType("navigation")[0];
+    if (!nav || nav.type !== "back_forward") { toTop(); addEventListener("load", toTop); }
+  } catch { toTop(); }
+
   // Copy email
   document.querySelectorAll(".copy-email").forEach((a) => {
     a.addEventListener("click", async (e) => {
