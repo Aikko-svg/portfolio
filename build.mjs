@@ -39,6 +39,7 @@ function renderBody(body, slug) {
   // Custom image directives:
   //   ::image full file.jpg        (next line = caption)
   //   ::image pair a.jpg b.jpg     (next line = caption)
+  body = body.replace(/^(###\s+)\d+\.\s+/gm, "$1");
   const lines = body.split("\n");
   const out = [];
   for (let i = 0; i < lines.length; i++) {
@@ -57,9 +58,9 @@ function renderBody(body, slug) {
         : `<div class="ph" style="aspect-ratio:${w}/${h}"><span>${f}<br>${w} × ${h}</span></div>`;
     };
     const inner = d[1] === "full"
-      ? img(files[0], 1440, 810, "(min-width: 1024px) 1200px, 100vw")
+      ? img(files[0], 1440, 810, "(min-width: 1400px) 1320px, 100vw")
       : `<div class="pair">${img(files[0], 1440, 960, "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw")}${img(files[1], 1440, 960, "(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw")}</div>`;
-    out.push(`<figure class="fig fig-${d[1]}">${inner}${caption ? `<figcaption>${marked.parseInline(caption)}</figcaption>` : ""}</figure>`);
+    out.push(`<figure class="wide fig fig-${d[1]}">${inner}${caption ? `<figcaption>${marked.parseInline(caption)}</figcaption>` : ""}</figure>`);
   }
   return marked.parse(out.join("\n"));
 }
@@ -100,27 +101,29 @@ function shell({ title, body, path = "/" }) {
 <meta name="description" content="${esc("Senior product designer, London. " + SITE.tagline + " " + SITE.lede)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<script src="/site.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="/">${esc(SITE.name)}</a>
-    <nav>
+    <nav aria-label="Main">
       <a href="/"${path === "/" ? ' aria-current="page"' : ""}>Work</a>
       <a href="/about/"${path === "/about/" ? ' aria-current="page"' : ""}>About</a>
-      <a href="mailto:${SITE.email}">Email</a>
+      <a href="mailto:${SITE.email}" class="copy-email" data-email="${SITE.email}">Copy email</a>
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
 ${body}
 </main>
 <footer class="foot">
   <div class="wrap foot-in">
-    <span>${esc(SITE.name)}</span>
     <a href="mailto:${SITE.email}">${SITE.email}</a>
+    <span>London</span>
   </div>
 </footer>
 </body>
@@ -130,7 +133,7 @@ ${body}
 function heroImg(s, withMobile = false) {
   const p = join(ROOT, "public", "images", s.slug, s.hero || "");
   const m = join(ROOT, "public", "images", s.slug, "hero-m.jpg");
-  const sizes = withMobile ? "(min-width: 1280px) 1184px, 100vw" : "(min-width: 1024px) 700px, 100vw";
+  const sizes = withMobile ? "(min-width: 1400px) 1320px, 100vw" : "(min-width: 1024px) 560px, 100vw";
   const img = `<img src="/images/${s.slug}/${s.hero}"${srcset(s.slug, s.hero || "", 1440, sizes)} width="1440" height="810" alt="${esc(s.heroAlt || "")}" fetchpriority="high">`;
   const m2 = existsSync(join(ROOT, "public", "images", s.slug, "hero-m@2x.jpg")) ? `, /images/${s.slug}/hero-m@2x.jpg 1600w` : "";
   return existsSync(p)
@@ -138,17 +141,12 @@ function heroImg(s, withMobile = false) {
     : `<div class="ph" style="aspect-ratio:1440/810"><span>hero · 1440 × 810</span></div>`;
 }
 
-function panel(s) {
-  const row = (k, v) => v ? `<div class="row"><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
-  return `<aside class="panel">
-  <p class="panel-desc">${esc(s.description)}</p>
-  <dl>
-    ${row("Year", s.year)}${row("Client", s.client)}${row("Role", s.role)}${row("Team", s.team)}
-  </dl>
-</aside>`;
+function facts(s) {
+  const row = (k, v) => v ? `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
+  return `<dl class="facts">${row("Role", s.role)}${row("Client", s.client)}${row("Year", s.year)}${row("Team", s.team)}</dl>`;
 }
 
-// Outcomes strip: lines that start with a figure become big tiles, the rest a short list.
+// Outcomes: lines that start with a figure become the big numbers, the rest a note underneath.
 function metrics(s) {
   const items = s.outcomes || [];
   const big = [], small = [];
@@ -157,45 +155,48 @@ function metrics(s) {
     if (m && big.length < 4) big.push([m[1], m[2]]); else small.push(o);
   }
   if (!items.length) return "";
-  return `<section class="metrics" aria-label="Outcomes">
-  ${big.length ? `<div class="metrics-big">${big.map(([n, t]) => `<div class="metric"><strong>${esc(n)}</strong><span>${esc(t)}</span></div>`).join("")}</div>` : ""}
-  ${small.length ? `<ul class="metrics-small">${small.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>` : ""}
+  return `<section class="outcomes" aria-label="Outcomes">
+  ${big.length ? `<ul class="outcomes-big">${big.map(([n, t]) => `<li><strong>${esc(n)}</strong><span>${esc(t)}</span></li>`).join("")}</ul>` : ""}
+  ${small.length ? small.map((o) => `<p class="outcomes-note">${esc(o)}</p>`).join("") : ""}
 </section>`;
 }
 
 function caseStudyPage(s, prev, next) {
-  const link = (x, label) => x ? `<a href="/work/${x.slug}/"><span>${label}</span><strong>${esc(x.title)}</strong></a>` : `<span></span>`;
   return shell({
     title: `${s.title} — ${SITE.name}`,
     path: `/work/${s.slug}/`,
     body: `
 <article class="study">
-  <div class="wrap">
-    <p class="eyebrow">${esc(s.tags)} · ${esc(s.year)}</p>
-    <h1 class="study-title">${esc(s.title)}</h1>
+  <header class="wrap study-head">
+    <a class="back" href="/">Work</a>
+    <h1>${esc(s.title)}</h1>
     <p class="study-lede">${esc(s.oneLiner)}</p>
     ${metrics(s)}
-    <div class="hero">${heroImg(s, true)}</div>
-    <div class="body">
-      ${panel(s)}
-      <div class="narrative">${s.html}</div>
-    </div>
-    <nav class="prevnext">${link(prev, "Previous")}${link(next, "Next")}</nav>
+  </header>
+  <figure class="wrap hero"><div style="view-transition-name: img-${s.slug}">${heroImg(s, true)}</div></figure>
+  <div class="wrap">
+    ${facts(s)}
+    <div class="narrative">${s.html}</div>
   </div>
+  <nav class="wrap prevnext" aria-label="More work">
+    <a href="/work/${prev.slug}/" rel="prev" data-key="ArrowLeft"><span>Previous</span>${esc(prev.title)}</a>
+    <a href="/work/${next.slug}/" rel="next" data-key="ArrowRight"><span>Next</span>${esc(next.title)}</a>
+  </nav>
 </article>`,
   });
 }
 
-function card(s) {
-  return `<a class="card" href="/work/${s.slug}/">
-  <div class="card-img">${heroImg(s)}</div>
-  <div class="card-text">
-    <p class="eyebrow">${esc(s.tags)} · ${esc(s.year)}</p>
-    <h2>${esc(s.title)}</h2>
-    <p class="hook">${esc(s.hook)}</p>
-    <p class="card-line">${esc(s.oneLiner)}</p>
-  </div>
-</a>`;
+function row(s) {
+  return `<li class="work-row">
+  <a href="/work/${s.slug}/">
+    <span class="w-text">
+      <span class="w-year">${esc(s.year)}</span>
+      <span class="w-title">${esc(s.title)}</span>
+      <span class="w-hook">${esc(s.hook)}</span>
+    </span>
+    <span class="w-img" style="view-transition-name: img-${s.slug}">${heroImg(s)}</span>
+  </a>
+</li>`;
 }
 
 function homePage(studies) {
@@ -204,14 +205,18 @@ function homePage(studies) {
     path: "/",
     body: `
 <section class="intro wrap">
-  <p class="eyebrow">Senior product designer · London</p>
+  <p class="intro-role">Senior product designer in London</p>
   <h1>${esc(SITE.tagline)}</h1>
   <p class="lede">${esc(SITE.lede)}</p>
-  <p>7+ years across insurance, utilities, B2B commerce and regulated gaming. Agency and in-house.</p>
+  <p class="intro-meta">7+ years across insurance, utilities, B2B commerce and regulated gaming. Agency and in-house.</p>
 </section>
-<section class="cards wrap">
-  ${studies.map(card).join("\n")}
-</section>`,
+<section class="wrap work" aria-label="Selected work">
+  <h2 class="work-h">Selected work</h2>
+  <ul class="work-list">
+  ${studies.map(row).join("\n")}
+  </ul>
+</section>
+`,
   });
 }
 
@@ -228,7 +233,7 @@ function aboutPage() {
     <div class="about-body">
       <p>I'm Youcef, a senior product designer in London with 7+ years across B2B, B2C, SaaS and enterprise, agency-side, in-house and independently.</p>
       <p>I studied psychology before moving into design, and it still shapes how I work. I'm drawn to the structural side of a problem: why people behave the way they do, where a system breaks down, and how to fix the logic underneath rather than repaint the interface on top.</p>
-      <p>Most of my work sits where research meets delivery. I run workshops, map journeys, dig into the data and use what I find to make decisions that hold up in a room full of stakeholders. I judge the work by what it changes: £184K back in misdispatch costs at Utility Warehouse, ease of use up 33% at Hastings Direct, task submission up 12.6% across PMI's markets.</p>
+      <p>Most of my work sits where research meets delivery. I run workshops, map journeys, dig into the data and use what I find to make decisions that hold up in a room full of stakeholders. I judge the work by what it changes: £184K back in misdispatch costs at Utility Warehouse, ease of use up 33% at Hastings Direct, retailer task completion up 21% across PMI's markets.</p>
       <p>I've led projects from discovery through to QA, worked day to day with engineers, product managers and compliance teams, and mentored junior designers along the way.</p>
       <p>Outside work, I'm usually on a football pitch or building a side project.</p>
       <p><a href="mailto:${SITE.email}">${SITE.email}</a></p>
@@ -248,6 +253,7 @@ rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 cpSync(join(ROOT, "public"), OUT, { recursive: true });
 cpSync(join(ROOT, "src", "styles.css"), join(OUT, "styles.css"));
+cpSync(join(ROOT, "src", "site.js"), join(OUT, "site.js"));
 
 const studies = loadStudies();
 writeFileSync(join(OUT, "index.html"), homePage(studies));
