@@ -9,8 +9,8 @@ const OUT = join(ROOT, "dist");
 const SITE = {
   name: "Youcef Laraba",
   email: "youcefjlaraba@gmail.com",
-  tagline: "Senior product designer for products that have got complicated.",
-  lede: "Legacy internal tools, regulated journeys and platforms shared across markets, made simpler to use and cheaper to run.",
+  tagline: "Making complex products simpler to use and cheaper to run.",
+  lede: "Most of my work is in legacy systems, regulated journeys and platforms run across several markets.",
 };
 
 // ---------- content ----------
@@ -97,7 +97,7 @@ function shell({ title, body, path = "/" }) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
-<meta name="description" content="${esc(SITE.tagline + " " + SITE.lede)}">
+<meta name="description" content="${esc("Senior product designer, London. " + SITE.tagline + " " + SITE.lede)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -204,9 +204,10 @@ function homePage(studies) {
     path: "/",
     body: `
 <section class="intro wrap">
+  <p class="eyebrow">Senior product designer · London</p>
   <h1>${esc(SITE.tagline)}</h1>
   <p class="lede">${esc(SITE.lede)}</p>
-  <p>Seven years across insurance, utilities, B2B retail and regulated gaming, in-house and agency. Based in London.</p>
+  <p>7+ years across insurance, utilities, B2B commerce and regulated gaming. Agency and in-house.</p>
 </section>
 <section class="cards wrap">
   ${studies.map(card).join("\n")}
@@ -225,7 +226,7 @@ function aboutPage() {
   <h1>About</h1>
   <div class="about-grid">
     <div class="about-body">
-      <p>I'm Youcef, a product designer in London with seven years across B2B, B2C, SaaS and enterprise, agency-side, in-house and independently.</p>
+      <p>I'm Youcef, a senior product designer in London with 7+ years across B2B, B2C, SaaS and enterprise, agency-side, in-house and independently.</p>
       <p>I studied psychology before moving into design, and it still shapes how I work. I'm drawn to the structural side of a problem: why people behave the way they do, where a system breaks down, and how to fix the logic underneath rather than repaint the interface on top.</p>
       <p>Most of my work sits where research meets delivery. I run workshops, map journeys, dig into the data and use what I find to make decisions that hold up in a room full of stakeholders. I judge the work by what it changes: £184K back in misdispatch costs at Utility Warehouse, ease of use up 33% at Hastings Direct, task submission up 12.6% across PMI's markets.</p>
       <p>I've led projects from discovery through to QA, worked day to day with engineers, product managers and compliance teams, and mentored junior designers along the way.</p>
