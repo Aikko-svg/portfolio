@@ -43,6 +43,12 @@ function renderBody(body, slug) {
   const lines = body.split("\n");
   const out = [];
   for (let i = 0; i < lines.length; i++) {
+    const demo = lines[i].match(/^::demo\s+(\S+)$/);
+    if (demo) {
+      const cap = (lines[i + 1] || "").trim(); i += 1;
+      out.push(`<figure class="wide demo" data-demo="${demo[1]}"><div class="demo-stage"><p class="demo-nojs">This is an interactive demo. It needs JavaScript to run.</p></div>${cap ? `<figcaption>${marked.parseInline(cap)}</figcaption>` : ""}</figure>`);
+      continue;
+    }
     const d = lines[i].match(/^::image\s+(full|pair)\s+(.*)$/);
     if (!d) { out.push(lines[i]); continue; }
     const files = d[2].trim().split(/\s+/);
