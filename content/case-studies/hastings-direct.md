@@ -24,6 +24,9 @@ outcomes:
 
 Industry benchmarking put Hastings Direct in the bottom quartile for start-to-quote conversion. The assumption going in was that 42 questions was simply too many; a benchmark competitor asked 23.
 
+::image full s1-before.jpg
+The journey we inherited. Left, the registration lookup that returns a wall of fields; centre, a quote buried among plan tables; right, the same action labelled and placed differently from screen to screen.
+
 The research said something more useful. Eleven usability tests, a round of customer interviews and a customer survey went into a single customer journey map, which I was responsible for building with the UX researcher. Only 7 of the 11 testers reached a price. Average time to a quote was 17 minutes 53 seconds. In the survey, 75% had negative feelings about buying insurance and only 4% called it easy. But the number of questions was not what people complained about. Fields were grouped without logic, jargon went unexplained, and the four-step progress bar lied: "It says it has four steps, but it keeps adding and adding questions. I want to see exactly how long I have left."
 
 ::image full s1-journey-map.jpg
@@ -49,7 +52,7 @@ Rather than argue the point, I tested it. I built the task into the prototype: u
 I took the screen recordings, the frustration moments and the verbatim quotes back to the director-level review and made the case: this was not an opinion about hierarchy, it was six customers all looking in one spot. The client moved the control out of the buried sub-menu and into the place users had pointed to. On a regulated product, that is the difference between technically compliant and actually usable.
 
 ::image pair s3-test-session.jpg s3-auto-renew.jpg
-Evidence beats opinion in a room full of directors. Left, usability-test notes with frequency and severity scored per finding. Right, where the auto-renewal control sat before: the fourth block down a Settings page, inside My Account.
+Evidence beats opinion in a room full of directors. Left, usability-test notes with frequency and severity scored per finding. Right, where the client first placed the control: the fourth block down Settings, inside My Account.
 
 ### 4. Pressure, parallel streams and the results
 
