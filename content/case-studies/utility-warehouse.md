@@ -35,8 +35,8 @@ Before touching the form, I mapped the whole journey with every department invol
 
 The problems weren't in any one screen. They were in the hand-offs. First line collected details second line didn't need and missed the ones they did. Nobody could see where a ticket was once it left them, so duplicates got raised. And there were six escalation routes because six teams had each built their own.
 
-::image full s2-journey-map.jpg
-The journey map I built. The low point is fault raising and hand-off, not the customer's first call.
+::image full s2-journey.jpg
+Redrawn from the journey map I built with every department involved. The first call wasn't the problem; what came after it was.
 
 ### 3. Copying the workflow would copy the £1 million
 
@@ -44,8 +44,8 @@ Utility Warehouse was moving from BILL to a new platform, William. The programme
 
 Our first go at the redesign was consulting each department separately. It didn't work: every group contradicted the last and decisions kept reopening. So I ran cross-department workshops instead, with first line, second line, engineers, L&D and the platform team in one room, deciding things once. Bringing L&D in mattered most. New advisers had a week in the classroom before going live, so we rebuilt the training alongside the product and they learned the same system they'd use on the floor.
 
-::image pair s3-legacy-vs-new.jpg s3-user-flow.jpg
-Left, the old manual model against the validation-led one that replaced it. Right, four product flows reduced to one guided path, with one branch for outages.
+::image full s3-before-after.jpg
+Four product flows and six escalation routes became one guided path, with one branch for outages and one route to second line.
 
 ### 4. The ticket can't leave until it's complete
 
