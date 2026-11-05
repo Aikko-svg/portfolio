@@ -59,8 +59,12 @@ function renderBody(body, slug) {
       const p = join(ROOT, "public", "images", slug, f);
       const exists = existsSync(p);
       if (exists) { const d = jpegSize(p); if (d) { h = Math.round(d[1] * w / d[0]); } }
+      const mf = f.replace(/\.jpg$/, "-m.jpg"), mp = join(ROOT, "public", "images", slug, mf);
+      const tag = `<img src="/images/${slug}/${f}"${srcset(slug, f, w, sizes)} width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}">`;
+      // A portrait version for phones, where the wide diagram's text would be too small to read.
+      const md = existsSync(mp) && jpegSize(mp);
       return exists
-        ? `<img src="/images/${slug}/${f}"${srcset(slug, f, w, sizes)} width="${w}" height="${h}" loading="lazy" alt="${esc(alt)}">`
+        ? (md ? `<picture><source media="(max-width: 639px)" srcset="/images/${slug}/${mf}" width="${md[0]}" height="${md[1]}">${tag}</picture>` : tag)
         : `<div class="ph" style="aspect-ratio:${w}/${h}"><span>${f}<br>${w} × ${h}</span></div>`;
     };
     const inner = d[1] === "full"
@@ -143,7 +147,7 @@ function heroImg(s, withMobile = false) {
   const img = `<img src="/images/${s.slug}/${s.hero}"${srcset(s.slug, s.hero || "", 1440, sizes)} width="1440" height="810" alt="${esc(s.heroAlt || "")}" fetchpriority="high">`;
   const m2 = existsSync(join(ROOT, "public", "images", s.slug, "hero-m@2x.jpg")) ? `, /images/${s.slug}/hero-m@2x.jpg 1600w` : "";
   return existsSync(p)
-    ? (withMobile && existsSync(m) ? `<picture><source media="(max-width: 639px)" srcset="/images/${s.slug}/hero-m.jpg 800w${m2}" sizes="100vw" width="800" height="1000">${img}</picture>` : img)
+    ? (withMobile && existsSync(m) ? `<picture><source media="(max-width: 639px)" srcset="/images/${s.slug}/hero-m.jpg 800w${m2}" sizes="100vw" width="${(jpegSize(m) || [800])[0]}" height="${(jpegSize(m) || [0, 1000])[1]}">${img}</picture>` : img)
     : `<div class="ph" style="aspect-ratio:1440/810"><span>hero · 1440 × 810</span></div>`;
 }
 

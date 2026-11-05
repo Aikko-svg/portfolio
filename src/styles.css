@@ -117,10 +117,22 @@ p { margin: 0 0 var(--s5); }
 .prevnext span::after { content: " (" attr(data-k) ")"; }
 
 /* Lightbox */
-.lightbox { position: fixed; inset: 0; z-index: 60; background: rgba(244, 245, 246, .96); display: grid; place-items: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .2s; cursor: zoom-out; }
+.zoom { position: relative; display: block; cursor: zoom-in; }
+.zoom-badge { position: absolute; right: var(--s3); bottom: var(--s3); display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: rgba(22, 24, 29, .78); color: #fff; font-size: 12px; line-height: 1; pointer-events: none; opacity: 0; transition: opacity .2s; }
+.zoom:hover .zoom-badge, .zoom:focus-within .zoom-badge { opacity: 1; }
+@media (hover: none) { .zoom-badge { opacity: 1; } }
+.lightbox { position: fixed; inset: 0; z-index: 60; background: rgba(244, 245, 246, .97); opacity: 0; pointer-events: none; transition: opacity .2s; cursor: zoom-out; }
 .lightbox.on { opacity: 1; pointer-events: auto; }
+.lb-scroll { position: absolute; inset: 0; display: grid; place-items: center; padding: var(--s5); }
 .lightbox img { max-width: min(100%, 2000px); max-height: 100%; width: auto; border-radius: 10px; box-shadow: 0 30px 80px -30px rgba(22, 24, 29, .4); }
-.lightbox button { position: absolute; top: 16px; right: 16px; font: inherit; font-size: 15px; background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.lightbox button { position: absolute; top: var(--s4); right: var(--s4); font: inherit; font-size: 15px; background: var(--ink); color: var(--paper); border: 0; border-radius: 999px; padding: var(--s2) var(--s4); cursor: pointer; }
+.lb-hint { display: none; }
+/* Phones: open at screen height and scroll sideways, so wide images are readable. */
+.lightbox.pan { cursor: auto; background: var(--paper); }
+.lightbox.pan .lb-scroll { top: 64px; bottom: 40px; display: flex; justify-content: flex-start; align-items: stretch; place-items: initial; overflow: auto; padding: 0 var(--s4); -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.lightbox.pan img { flex: none; margin: 0; max-width: none; max-height: none; height: 100%; width: auto; border-radius: 8px; box-shadow: none; }
+.lightbox.pan .lb-hint { display: block; position: absolute; left: var(--s4); bottom: var(--s2); margin: 0; font-size: 13px; color: var(--ink-2); }
+html.lb-open { overflow: hidden; }
 
 /* About */
 .about { padding-top: var(--page-top); padding-bottom: var(--page-end); }
@@ -203,3 +215,14 @@ p { margin: 0 0 var(--s5); }
 .lr-flash { animation: lr-flash 1.2s ease-out; }
 @keyframes lr-flash { 0%, 40% { outline: 2px solid #F2C94C; outline-offset: 2px; } 100% { outline: 2px solid transparent; outline-offset: 6px; } }
 @media (prefers-reduced-motion: reduce) { .lr-only { transition: none; } .lr-flash { animation: none; } }
+
+/* Demo on phones: toggle stays in reach, and the explanation sits above the cashier so you see both at once. */
+@media (max-width: 899px) {
+  .d-seg { position: sticky; top: 76px; z-index: 5; box-shadow: inset 0 0 0 1px var(--rule), 0 6px 18px -8px rgba(22, 24, 29, .3); }
+  .d-body { gap: 0; margin-top: var(--s5); }
+  .d-side { display: contents; }
+  .d-side h3 { order: 1; font-size: 20px; margin-bottom: var(--s2); }
+  .d-side .d-msg { order: 2; font-size: 15px; margin-bottom: var(--s5); }
+  .lr { order: 3; height: 540px; }
+  .d-count { order: 4; margin-top: var(--s5); }
+}

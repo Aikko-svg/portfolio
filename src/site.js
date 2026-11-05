@@ -20,28 +20,41 @@
     });
   });
 
-  // Case studies: click any image to see it full size
+  // Case studies: tap or click any image to see it full size.
+  // On phones the full image opens at screen height, so you can drag across it (and pinch to zoom) to read it.
   const zoomables = document.querySelectorAll(".hero img, .fig img");
   if (zoomables.length) {
     const box = document.createElement("div");
     box.className = "lightbox"; box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Image, full size");
-    box.innerHTML = '<img alt=""><button type="button">Close</button>';
+    box.innerHTML = '<div class="lb-scroll"><img alt=""></div><p class="lb-hint">Drag to look around. Pinch to zoom.</p><button type="button">Close</button>';
     document.body.appendChild(box);
-    const big = box.querySelector("img"), btn = box.querySelector("button");
+    const big = box.querySelector("img"), btn = box.querySelector("button"), scroller = box.querySelector(".lb-scroll");
+    const narrow = matchMedia("(max-width: 899px)");
     let last = null;
-    const close = () => { box.classList.remove("on"); last && last.focus(); };
+    const close = () => { box.classList.remove("on"); document.documentElement.classList.remove("lb-open"); last && last.focus(); };
     zoomables.forEach((im) => {
       im.tabIndex = 0;
+      im.setAttribute("role", "button");
+      im.setAttribute("aria-label", (im.alt ? im.alt + ". " : "") + "Open full size");
+      const host = im.closest("picture") || im;
+      const wrap = document.createElement("span"); wrap.className = "zoom";
+      host.parentNode.insertBefore(wrap, host); wrap.appendChild(host);
+      wrap.insertAdjacentHTML("beforeend", '<span class="zoom-badge" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlarge</span>');
       const open = () => {
         last = im;
         const set = im.getAttribute("srcset");
         big.src = set ? set.split(",").pop().trim().split(" ")[0] : im.currentSrc || im.src;
-        big.alt = im.alt; box.classList.add("on"); btn.focus();
+        big.alt = im.alt;
+        box.classList.toggle("pan", narrow.matches);
+        box.classList.add("on"); document.documentElement.classList.add("lb-open");
+        scroller.scrollTo(0, 0); btn.focus();
       };
-      im.addEventListener("click", open);
+      wrap.addEventListener("click", open);
       im.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
     });
-    box.addEventListener("click", close);
+    btn.addEventListener("click", close);
+    // Desktop: click anywhere to close. Phone: only the button or the empty backdrop closes, so dragging doesn't.
+    box.addEventListener("click", (e) => { if (e.target === btn) return; if (!box.classList.contains("pan") || e.target === box || e.target === scroller) close(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && box.classList.contains("on")) close(); });
   }
 
