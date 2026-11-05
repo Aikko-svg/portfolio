@@ -64,5 +64,7 @@ Left, the six-group architecture. Right, the homepage and My Tasks built from th
 
 Retailer task completion rose from 62% to 75% on average, and new markets launched in 10 weeks instead of 16 because they configured what already existed. Time on platform went up 32%. That matters here: the platform exists to educate retailers about the products as much as to sell them, which is why the learning sits inside tasks with rewards. We launched with four markets and reached fourteen before I left. The system has since gone worldwide.
 
+What I'd do differently: lock in HQ's limits sooner. If we had agreed early which components and features mattered most, the markets would have had a clear frame from day one, instead of us working it out request by request.
+
 ::image full s5-live-platform.jpg
 One system, fourteen hierarchies: every market reorders the same cards for its own catalogue.
