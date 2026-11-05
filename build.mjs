@@ -207,7 +207,7 @@ function homePage(studies) {
   <p class="eyebrow">Senior product designer · London</p>
   <h1>${esc(SITE.tagline)}</h1>
   <p class="lede">${esc(SITE.lede)}</p>
-  <p>7+ years across insurance, utilities, B2B commerce and regulated gaming. Agency and in-house.</p>
+  <p>7+ years across insurance, utilities, B2B commerce and regulated consumer platforms. Agency and in-house.</p>
 </section>
 <section class="cards wrap">
   ${studies.map(card).join("\n")}
