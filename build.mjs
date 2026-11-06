@@ -231,7 +231,6 @@ function homePage(studies) {
 
 function aboutPage() {
   const clients = ["Sky", "Spotify", "Vodafone", "London Stock Exchange", "NHS", "Nissan", "Volkswagen", "Cisco", "Unilever (Dove)", "Philip Morris International", "BAT", "Hastings Direct", "Utility Warehouse", "Keywords Studios", "UserTesting", "Blue Prism", "Optimum Nutrition", "CUBE", "Morae"];
-  const recognition = ["The Drum Awards, Rebrand/Relaunch, 2023", "Global ACE Awards, 2022", "B2B Marketing Awards, 2021"];
   return shell({
     title: `About — ${SITE.name}`,
     path: "/about/",
@@ -251,7 +250,6 @@ function aboutPage() {
   </div>
   <dl class="about-list">
     <div><dt>Clients and brands</dt><dd><ul>${clients.map((c) => `<li>${c}</li>`).join("")}</ul></dd></div>
-    <div><dt>Recognition</dt><dd><ul class="single">${recognition.map((c) => `<li>${c}</li>`).join("")}</ul></dd></div>
   </dl>
 </section>`,
   });
